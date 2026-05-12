@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import {Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { LoginRequest } from '../models/user/loginRequest.model';
 import { Observable } from 'rxjs';
@@ -22,8 +22,8 @@ export class AuthService {
   }
 
   saveSession(response: any): void {
-    localStorage.setItem('token', response.token);
-    localStorage.setItem('user', JSON.stringify(response.user));
+    localStorage.setItem('token', response.data.access_token);
+    localStorage.setItem('user', JSON.stringify(response.data.user));
   }
 
   getToken(): string | null {
@@ -36,7 +36,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return !!this.getToken;
+    return !!this.getToken();
   }
 
   logout(): void {
@@ -45,6 +45,9 @@ export class AuthService {
   }
   hasRole(role: number): boolean {
     const user = this.getUser();
-    return user?.role_id === role;
+    if(role===1 ||role===4){
+      return user?.role_id === role;
+    }
+    return false;
   }
 }
