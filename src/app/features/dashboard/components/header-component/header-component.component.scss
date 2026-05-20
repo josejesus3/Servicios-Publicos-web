@@ -29,7 +29,7 @@
 .img-logo {
     width: 510px;
     margin-left: -15%;
-    margin-top: -9%;
+    margin-top: -8%;
     
 }
 
@@ -58,12 +58,35 @@
     }
 
     .img-logo {
-        width: 420px;
-       margin-left: -5%;
-       margin-top: 12%;
+
+        width: 100%;
+        max-width: 420px;
+       margin-left: -1%;
+       margin-top: 14%;
     }
 }   
 
 @media (max-width:576px){
+
+    .hero-section{
+        padding: 1rem 2rem;
+    }
+    .hero-content{
+        width: 100%;
+        max-width: 550px;
+        margin-left: 7%;
+    }
+    .welcome-text{
+        font-size: 26px;
+    }
+    .hero-title{
+        font-size: 30px;
+    }
+    .img-logo{
+        width: 100%;
+        max-width: 540px;
+        margin: auto;
+    }
+
 
 }
