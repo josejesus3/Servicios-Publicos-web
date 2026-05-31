@@ -1,5 +1,5 @@
 .hero-section {
-    padding: 3rem 2rem;
+    padding: 1rem 2rem;
 }
 
 .hero-content {
@@ -15,7 +15,7 @@
 
 .hero-title {
     text-align: left;
-    font-size: 45px;
+    font-size: 40px;
     font-weight: 600;
     line-height: 1.1;
 }
@@ -27,23 +27,32 @@
 }
 
 .img-logo {
-    width: 510px;
-    margin-left: -15%;
-    margin-top: -8%;
-    
+    width: 100%;
+    max-width: 510px;
+    margin: 0 auto;
 }
 
 .img-logo img {
     width: 100%;
+    height: auto;
     display: block;
-    border: none;
+}
+
+@media (max-width: 1200px) {
+
+    .img-logo {
+        max-width: 360px;
+        margin: 2rem auto 0 auto;
+    }
+
+    .hero-title {
+        font-size: 38px;
+    }
 }
 
 @media (max-width: 992px) {
 
-    .hero-section {
-        padding: 3rem 2rem;
-    }
+
 
     .hero-content {
         max-width: 100%;
@@ -61,28 +70,31 @@
 
         width: 100%;
         max-width: 420px;
-       margin-left: -1%;
-       margin-top: 14%;
+        margin-left: -1%;
+        margin-top: 14%;
     }
-}   
 
-@media (max-width:576px){
 
-    .hero-section{
-        padding: 1rem 2rem;
-    }
-    .hero-content{
+
+}
+
+@media (max-width:576px) {
+
+    .hero-content {
         width: 100%;
         max-width: 550px;
         margin-left: 7%;
     }
-    .welcome-text{
+
+    .welcome-text {
         font-size: 26px;
     }
-    .hero-title{
+
+    .hero-title {
         font-size: 30px;
     }
-    .img-logo{
+
+    .img-logo {
         width: 100%;
         max-width: 540px;
         margin: auto;

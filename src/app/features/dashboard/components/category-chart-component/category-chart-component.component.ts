@@ -8,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './category-chart-component.component.scss'
 })
 export class CategoryChartComponentComponent {
+  areas=[
+    {area:"Areas verdes",reports:128},
+    {area:"Alumbrado Publico",reports:100},
+    {area:"Limpieza",reports:90},
+    {area:"Baches",reports:40},
+    {area:"Alcantarillado",reports:90}
+  ];
 
 }

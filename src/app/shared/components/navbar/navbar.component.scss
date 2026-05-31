@@ -1,0 +1,210 @@
+.custom-nav {
+    padding: 0px 14px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.08);
+}
+
+.custom-box .title {
+    font-size: 35px;
+    font-weight: 600;
+    line-height: 0.3;
+    opacity: 1px;
+
+}
+
+.custom-box .dependencia {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1;
+
+}
+
+.custom-box .secText {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1;
+    color: #ff6a008f;
+
+}
+
+.btn-login {
+    background: #ff6a00;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 10px;
+    color: white;
+    height: 45px;
+    
+}
+
+.btn-login:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.bi-person {
+    color: white;
+    
+}
+
+li {
+    padding: 7px;
+    font-size: 17px;
+}
+li:hover{
+   transform: translateY(-4px);
+    
+}
+/* --- Botón de 3 Puntos (Kebab Menu) --- */
+/* --- Estilos del Botón de 3 Puntos --- */
+.custom-kebab {
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 30px;
+  height: 24px;
+  padding: 0;
+}
+
+.custom-kebab:focus {
+  box-shadow: none; /* Evita el borde azul molesto de Bootstrap */
+}
+
+.custom-kebab .toggler-dot {
+  display: block;
+  width: 6px;
+  height: 6px;
+  background-color: #333; /* Cambia a #fff si tu fondo de nav es oscuro */
+  border-radius: 50%;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* --- Transformación de Puntos a X --- */
+.custom-kebab.active .toggler-dot:nth-child(1) {
+  width: 24px;
+  height: 3px;
+  border-radius: 2px;
+  transform: translateY(10.5px) rotate(45deg);
+}
+
+.custom-kebab.active .toggler-dot:nth-child(2) {
+  opacity: 0; /* Desvanece el punto del centro */
+}
+
+.custom-kebab.active .toggler-dot:nth-child(3) {
+  width: 24px;
+  height: 3px;
+  border-radius: 2px;
+  transform: translateY(-10.5px) rotate(-45deg);
+}
+
+/* --- Transición Delicada del Menú Desplegable --- */
+@media (max-width: 991.98px) {
+  .custom-menu-collapse {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    width: 100%;
+    transform: translateY(-15px); /* Inicia ligeramente más arriba */
+    transition: max-height 0.4s ease-in-out, 
+                opacity 0.3s ease-in-out, 
+                transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  /* Estado Visible */
+  .custom-menu-collapse.show {
+    max-height: 350px; /* Espacio suficiente para tus 5 elementos */
+    opacity: 1;
+    transform: translateY(0); /* Cae suavemente a su posición */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+/* Soporte para Pantallas Grandes (Escritorio) */
+@media (min-width: 992px) {
+  .custom-menu-collapse {
+    display: flex !important;
+    opacity: 1 !important;
+    max-height: none !important;
+    transform: none !important;
+    flex-basis: auto;
+    flex-grow: 1;
+    align-items: center;
+  }
+}
+
+
+@media (max-width:576px) {
+    .custom-box .title {
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 0.6;
+        opacity: 1px;
+
+    }
+
+    .custom-box .dependencia {
+        font-size: 12px;
+        font-weight: 300;
+
+
+    }
+
+    .custom-box .secText {
+        font-size: 12px;
+        font-weight: 300;
+        color: #ff6a008f;
+
+    }
+
+    .btn-login {
+        background: #ff6a00;
+        font-size: 15px;
+        font-weight: 500;
+        border-radius: 10px;
+        color: white;
+        height: 40px;
+        box-shadow: 0 5px 5px #ff6a006c;
+        margin-right: 20px;
+    }
+
+    .btn-login:hover {
+        border-radius: 10px;
+        border: 0;
+    }
+
+    .bi-person {
+        color: white
+    }
+
+    li {
+        padding: 7px;
+        font-size: 15px;
+    }
+
+    /* --- Transformación de Puntos a X --- */
+.custom-kebab.active .toggler-dot:nth-child(1) {
+  width: 20px;
+  height: 3px;
+  border-radius: 2px;
+  transform: translateY(10.5px) rotate(45deg);
+}
+
+.custom-kebab.active .toggler-dot:nth-child(2) {
+  opacity: 0; /* Desvanece el punto del centro */
+}
+
+.custom-kebab.active .toggler-dot:nth-child(3) {
+  width: 20px;
+  height: 3px;
+  border-radius: 2px;
+  transform: translateY(-10.5px) rotate(-45deg);
+}
+
+}

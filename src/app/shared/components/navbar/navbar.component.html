@@ -1,1 +1,52 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-expand-lg navbar-light custom-nav">
+    <div class="container">
+        
+        <div class="custom-box navbar-brand">
+            <p class="dependencia">Gobierno Municipal de</p>
+            <h1 class="title">El Grullo</h1>
+            <p class="secText">La Ciudad de la Gente</p>
+        </div>
+
+        <!-- BOTÓN BURGER (Modificado para 3 puntos y Angular) -->
+        <button class="navbar-toggler custom-kebab d-lg-none" type="button"
+                [class.active]="isMenuOpen"
+                (click)="toggleMenu()"
+                aria-controls="navbarSupportedContent"
+                aria-label="Toggle navigation">
+            <span class="toggler-dot"></span>
+            <span class="toggler-dot"></span>
+            <span class="toggler-dot"></span>
+        </button>
+
+        <!-- MENÚ (Con clase personalizada para bajada delicada) -->
+        <div class="custom-menu-collapse" [class.show]="isMenuOpen">
+            <ul class="navbar-nav ms-auto align-items-lg-center"> <!-- Añadí alineación para el botón de login -->
+
+                <li class="nav-item">
+                    <a class="nav-link" href="">Inicio</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="">Mis Reportes</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="">Contactos</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="">Ayuda</a>
+                </li>
+
+                <li class="nav-item ms-lg-2 mt-2 mt-lg-0"> <!-- Margen dinámico para el botón -->
+                    <button class="btn btn-login">
+                        <i class="bi bi-person"></i>
+                        Inicio de Sesión
+                    </button>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+</nav>

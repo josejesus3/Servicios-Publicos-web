@@ -1,0 +1,77 @@
+/* Contenedor de la tarjeta individual */
+.category-card {
+  background-color: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  min-width: 130px; /* Ancho mínimo para que se mantengan uniformes */
+  flex: 1 1 0px; /* Distribuye el espacio de forma equitativa en pantallas grandes */
+  height: 150px;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+/* Efecto al pasar el mouse por encima */
+.category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Contenedor del icono para mantenerlo centrado */
+.icon-wrapper {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Título de la categoría (Áreas verdes, Limpieza, etc.) */
+.category-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333333;
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+/* Contador de reportes inferior */
+.category-count {
+  font-size: 0.8rem;
+  color: #888888;
+}
+
+/* Ocultar la barra de desplazamiento en navegadores si lo deseas (opcional) */
+.overflow-x-auto::-webkit-scrollbar {
+  height: 6px;
+}
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: #e0e0e0;
+  border-radius: 4px;
+}
+
+@media(max-width:590px){
+    .category-card {
+  background-color: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  min-width: 140px; /* Ancho mínimo para que se mantengan uniformes */
+  flex: 1 1 0px; /* Distribuye el espacio de forma equitativa en pantallas grandes */
+  height: 150px;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+}
+

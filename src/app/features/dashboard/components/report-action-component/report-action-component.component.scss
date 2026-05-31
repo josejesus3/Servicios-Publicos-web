@@ -1,0 +1,43 @@
+.report-card {
+    padding: 30px 20px;
+    text-align: start;
+    color: white;
+    line-height: 1;
+    
+}
+.title{
+    font-size: 23px;
+    font-weight: 400;
+}
+.subtitle{
+    font-size: 18px;
+    font-weight: 400;
+}
+.report-button{
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 30px;
+    background: white;
+    color: #ff6a00;
+    border: 1px solid white;
+}
+.report-button:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 12px rgba(234, 230, 230, 0.282);
+}
+
+@media (max-width:1050px){
+    .title{
+    font-size: 22px;
+    font-weight: 400;
+}
+.subtitle{
+    line-height: 1.4;
+}
+
+.report-button{
+    margin-top: 15px;
+}
+
+}
+
