@@ -1,0 +1,16 @@
+ .report-button-flot {
+     position: fixed;
+     bottom: 2%;
+     right: 8%;
+     font-size: 18px;
+     font-weight: 400;
+     margin-top: 30px;
+     background: #ff6a00;
+     color: white;
+     border: 1px solid white;
+ }
+
+ .report-button-flot:hover {
+     transform: translateY(-3px);
+     box-shadow: 0 10px 12px rgba(234, 230, 230, 0.282);
+ }

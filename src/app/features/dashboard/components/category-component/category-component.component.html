@@ -1,0 +1,20 @@
+<div class="row g-4"> <!-- Añadido g-4 para separar las dos columnas grandes en móvil -->
+    <div class="col-12 col-lg-8">
+        <div class="custom-box">
+            <div class="d-flex justify-content-between p-3 box-title">
+                <a href=""  >
+                    <i class="bi bi-border-all"></i> Categorias
+                </a>
+                <a href="" style="color: #ff6a00;">Ver Todas</a>
+            </div>
+            <!-- El componente ahora se adaptará perfectamente al ancho que le da el padre -->
+            <app-category-chart-component></app-category-chart-component> 
+        </div>
+    </div>
+    <div class="col-12 col-lg-4 card-report">
+        <div class="custom-box report">
+            <app-report-action-component></app-report-action-component>
+        </div>
+    </div>
+</div>
+

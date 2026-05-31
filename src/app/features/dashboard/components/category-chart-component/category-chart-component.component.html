@@ -1,0 +1,14 @@
+<div class="d-flex flex-nowrap overflow-x-auto gap-3 pb-3 px-3 justify-content-lg-between justify-content-start">
+    @if (areas && areas.length > 0) {
+        @for (item of areas; track $index) {
+            <div class="category-card">
+                <div class="icon-wrapper">
+                    <!-- Aquí pones tus iconos (pueden ser Bootstrap Icons) -->
+                    <i class="bi bi-tree-fill text-success fs-2"></i>
+                </div>
+                <h3 class="category-title">{{ item.area }}</h3>
+                <span class="category-count">{{ item.reports }} reportes</span>
+            </div>
+        }
+    }
+</div>
