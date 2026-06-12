@@ -28,11 +28,7 @@
                                     Correo Electrónico
                                 </label>
 
-                                <input
-                                    type="email"
-                                    class="form-control"
-                                    placeholder="Escribe un correo electrónico..."
-                                >
+                                <input type="email" name="email" class="form-control" [(ngModel)]="email" placeholder="Escribe un correo electrónico...">
                             </div>
 
                             <div>
@@ -41,11 +37,7 @@
                                 </label>
 
                                 <div class="password-box">
-                                    <input
-                                        type="password"
-                                        class="form-control"
-                                        placeholder="Escribe una contraseña"
-                                    >
+                                    <input type="password" name="password" class="form-control" [(ngModel)]="password" placeholder="Escribe una contraseña">
 
                                     <i class="bi bi-eye"></i>
                                 </div>
@@ -54,29 +46,20 @@
                             <div class="d-flex flex-column options">
 
                                 <div class="form-check">
-                                    <input
-                                        type="checkbox"
-                                        class="form-check-input"
-                                    >
+                                    <input type="checkbox" class="form-check-input">
 
                                     <label class="form-check-label">
                                         Recordarme
                                     </label>
                                 </div>
 
-                                <a
-                                    href="#"
-                                    class="text-secondary text-decoration-none"
-                                >
+                                <a href="#" class="text-secondary text-decoration-none">
                                     ¿Olvidaste tu contraseña?
                                 </a>
 
                             </div>
 
-                            <button
-                                type="submit"
-                                class="btn btn-login w-100"
-                            >
+                            <button type="submit" class="btn btn-login w-100" (click)="login()">
                                 <i class="bi bi-send"></i>
                                 Iniciar sesión
                             </button>
@@ -106,15 +89,10 @@
                     <div class="right-side">
 
                         <div class="img-logo">
-                            <img
-                                src="logoGb.png"
-                                alt="Logo Gobierno Municipal"
-                            >
+                            <img src="logoGb.png" alt="Logo Gobierno Municipal">
                         </div>
 
-                        <button
-                            class="btn btn-light w-75 rounded-3 fw-medium"
-                        >
+                        <button class="btn btn-light">
                             <i class="bi bi-backspace"></i>
                             Regresar
                         </button>

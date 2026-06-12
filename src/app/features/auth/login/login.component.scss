@@ -42,7 +42,7 @@ body {
 /* Tarjeta principal */
 .login-card {
   width: 100%;
-  max-width: 700px;
+  max-width: 500px;
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(8px);
   border-radius: 20px;
@@ -146,15 +146,15 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 30px;
-  padding: 20px;
+  
 }
 
 /* Logo */
+
 .img-logo img {
-  width: 180px;
-  max-width: 100%;
+  width:300px;
   display: block;
+  
 }
 
 /* Responsive */
