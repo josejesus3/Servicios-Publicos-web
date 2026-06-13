@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChartSummaryComponent } from './chart-summary.component';
+import { LayautComponent } from './layaut.component';
 
-describe('ChartSummaryComponent', () => {
-  let component: ChartSummaryComponent;
-  let fixture: ComponentFixture<ChartSummaryComponent>;
+describe('LayautComponent', () => {
+  let component: LayautComponent;
+  let fixture: ComponentFixture<LayautComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ChartSummaryComponent]
+      imports: [LayautComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ChartSummaryComponent);
+    fixture = TestBed.createComponent(LayautComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

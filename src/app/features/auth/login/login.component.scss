@@ -1,9 +1,37 @@
 body {
-  background: #f3f3f3;
+  margin: 0;
+  padding: 0;
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
+.main-auth-container {
+  position: relative;
+  min-height: 100vh;
+}
 
+/* Capa oscura sobre la imagen */
+.main-auth-container::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: -1;
+}
+
+/* Imagen de fondo */
+.bg-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.45;
+  z-index: -2;
+}
+
+/* Centrar login */
 .container {
   min-height: 100vh;
   display: flex;
@@ -11,143 +39,135 @@ body {
   align-items: center;
 }
 
+/* Tarjeta principal */
 .login-card {
-  background-color:white;
   width: 100%;
-  max-width: 600px;
-  border-radius: 25px;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
 }
+
+/* Lado izquierdo */
 .left-side {
-  padding: 15px 20px;
+  padding: 30px;
 }
+
 .subtitle {
-  color: #555;
-  font-size: 18px;
-  margin-top: 25px;
-  margin-bottom: 35px;
+  color: #666;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
+
 .form-label {
-  font-size: 20px;
-  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 500;
 }
+
 .form-control {
-  height: 50px;
-  font-size: 18px;
+  height: 45px;
   border-radius: 10px;
   border: 1px solid #ddd;
-  padding-left: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
+
+/* Contraseña */
 .password-box {
   position: relative;
 }
+
 .password-box i {
   position: absolute;
-  font-size: 22px;
-  right: 25px;
-  top: 25px;
+  right: 15px;
+  top: 22px;
   transform: translateY(-50%);
   cursor: pointer;
+  color: #666;
 }
+
+/* Opciones */
 .options {
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 20px;
-}
-.options a {
-  margin-top: 15px;
+  gap: 10px;
 }
 
 .options input {
-  border: 1px solid #ff6a00;
+  border-color: #ff6a00;
 }
+
 .options input:checked {
   background-color: #ff6a00;
+  border-color: #ff6a00;
 }
-.options input:focus {
-  box-shadow: 0 0 0 0.25rem rgba(243, 109, 26, 0.25);
-}
+
+/* Botón */
 .btn-login {
-  font-size: 22px;
+  height: 45px;
+  font-size: 17px;
+  background: #ff6a00;
   color: white;
-  height: 50px;
-  background-color: #ff6a00;
-  border-radius: 15px;
   border: none;
-  margin-top: 20px;
-  margin-bottom: 35px;
+  border-radius: 10px;
   transition: 0.3s;
 }
+
 .btn-login:hover {
-  background: #e65f00;
+  background: #e55f00;
 }
+
+/* Registro */
 .register {
   text-align: center;
-  font-size: 20px;
   margin-top: 20px;
-  margin-bottom: 80px;
 }
+
 .register a {
-  text-align: center;
   color: #ff6a00;
+  font-weight: 600;
 }
+
+/* Términos */
 .terms {
   text-align: center;
-  color: #555;
-  line-height: 1.8;
+  font-size: 13px;
+  color: #777;
+  margin-top: 15px;
 }
 
+/* Lado derecho */
 .right-side {
-  min-height: 100%;
   background: #ff6a00;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-
-  gap: 0; /* importante */
+  
 }
 
-/* contenedor logo */
-.img-logo {
-  margin: 0;
-  padding: 0;
-  line-height: 1;
-}
+/* Logo */
 
-/* imagen */
 .img-logo img {
-  width: 320px;
+  width:300px;
   display: block;
-  margin-bottom: 280px;
+  
 }
 
-/* texto */
-.gov-text {
-  text-align: center;
-  color: white;
-  margin-top: -10px; /* acerca el texto al logo */
-}
-
-/* quitar márgenes por defecto */
-.gov-text p,
-.gov-text h2 {
-  margin: 0;
-  padding: 0;
-  font-size: 25px;
-}
-
-.gov-text h2 {
-  font-size: 40px;
-  font-weight: 600;
-  color: #c5b8b8;
-}
+/* Responsive */
 @media (max-width: 991px) {
-  .left-side {
-    padding: 10px 20px;
-  }
   .right-side {
     display: none;
+  }
+
+  .login-card {
+    margin: 15px;
+  }
+
+  .left-side {
+    padding: 25px;
   }
 }
