@@ -1,0 +1,10 @@
+<div class="list-group px-4">
+    @for (item of contactFields; track $index) {
+    <label class="form-label form-title" name="item.name">{{item.label}}</label>
+    <input *ngIf="item.type !== 'textarea'" [type]="item.type"  [name]="item.name" class="form-control" [placeholder]="item.placeholder">
+
+    <textarea *ngIf="item.type === 'textarea'" class="form-control" rows="5" [placeholder]="item.placeholder">
+  </textarea>
+    }
+    <button class="btn form-button"><i class="bi bi-send"></i>  Enviar mensaje</button>
+</div>

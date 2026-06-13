@@ -3,12 +3,13 @@ import { LoginComponent } from './features/auth/login/login.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { LayautComponent } from './layaut/layaut.component';
 import { CategoryChartComponentComponent } from './features/dashboard/components/category-chart-component/category-chart-component.component';
+import { ContactComponent } from './features/contact/contact.component';
 
 export const routes: Routes = [
     {path:'',component:LayautComponent,
         children:[
             { path: '', component: DashboardComponent },
-            { path: 'misReportes', component: CategoryChartComponentComponent },
+            { path: 'contactos', component: ContactComponent },
 
         ]
     },

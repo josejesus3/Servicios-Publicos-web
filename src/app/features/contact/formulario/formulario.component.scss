@@ -1,0 +1,50 @@
+.form-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #2d3436;
+  margin-top: 10px;
+}
+.form-control{
+  font-size: 16.5px;
+}
+
+.form-control::placeholder {
+  color: #6c757d;
+  opacity: 1;
+  /* Evita que algunos navegadores lo muestren más transparente */
+}
+
+.form-button {
+  font-size: 18px;
+  background: #ff6a00;
+  color: white;
+  border: 1px solid #ff6a00;
+  border-radius: 12px;
+  width: 180px;
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  transition: all .25s ease;
+}
+
+.form-button:hover {
+
+  transform: translateY(-4px);
+  box-shadow:
+    0 10px 20px #ff6a0069;
+}
+
+.form-button:active {
+  background: #ff6a00;
+  color: white;
+  border: 1px solid #ff6a00;
+  transform: scale(.97);
+  box-shadow: none;
+}
+
+.form-button:focus {
+
+  outline: none !important;
+  box-shadow: none !important;
+
+}
