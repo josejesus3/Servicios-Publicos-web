@@ -126,10 +126,18 @@
 
 /* Móvil */
 @media (max-width: 590px) {
-
+  .sin-reports{
+    font-size: 25px;
+  }
+.category-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.3;
+}
   .category-card {
-    min-width: 160px;
-    min-height: 180px;
+    min-width: 150px;
+    height: 152px;
   }
 
   .icon-wrapper {
@@ -138,11 +146,11 @@
   }
 
   .icon-wrapper i {
-    font-size: 1.7rem;
+    font-size: 1rem;
   }
 
   .category-badge {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
 }

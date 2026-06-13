@@ -1,22 +1,17 @@
 .report-card {
     position: relative;
     overflow: hidden;
-
     padding: 30px 20px;
     text-align: start;
     color: white;
-
     border-radius: 18px;
-
     background: linear-gradient(
         135deg,
         #ff6a00 0%,
         #ff8f1f 100%
     );
-
     box-shadow:
         0 15px 35px rgba(255, 106, 0, .25);
-
     line-height: 1;
 }
 
@@ -42,7 +37,7 @@
 .subtitle {
     font-size: 18px;
     font-weight: 400;
-    line-height: 1.4;
+    line-height: 1.2;
     margin-top: 15px;
     position: relative;
     z-index: 2;
@@ -52,7 +47,7 @@
     font-size: 18px;
     font-weight: 400;
 
-    margin-top: 30px;
+    margin-top: 15px;
 
     background: white;
     color: #ff6a00;
@@ -90,14 +85,15 @@
     box-shadow: none !important;
 }
 
-@media (max-width:1050px) {
+@media (max-width:1024px) {
 
     .title {
         font-size: 22px;
+        line-height: 1.2;
     }
 
     .subtitle {
-        line-height: 1.4;
+        line-height: 1.2;
     }
 
     .report-button {
@@ -105,6 +101,6 @@
     }
 
     .report-icon {
-        font-size: 90px;
+        font-size: 120px;
     }
 }

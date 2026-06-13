@@ -45,6 +45,7 @@ export class LoginComponent {
         console.error('Error de login', error);
       }
     });
+    this.router.navigate(['']);
 
   }
  
