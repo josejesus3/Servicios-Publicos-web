@@ -1,1 +1,16 @@
-<p>ayuda-card works!</p>
+<div class="p-4">
+    @for (button of buttons; track $index) {
+     <button
+      type="button"
+      class="btn btn-reports mb-2"
+      [id]="'btn-' + button.id"
+      [disabled]="button.disabled"
+      [class.active-btn]="activeButton === button.id"
+      [attr.aria-label]="button.label"
+      (click)="isActive(button.id)">
+
+      <i [class]="button.icon"></i>
+      {{ button.label }}
+    </button>
+    }
+</div>

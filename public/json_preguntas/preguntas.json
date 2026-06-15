@@ -1,0 +1,126 @@
+[
+  {
+    "id": 1,
+    "tema": "General",
+    "preguntas": [
+      {
+        "id": 101,
+        "titulo": "¿Cómo crear un reporte?",
+        "respuesta": "Presiona el botón 'Nuevo reporte' y completa el formulario."
+      },
+      {
+        "id": 102,
+        "titulo": "¿Cómo adjuntar evidencias?",
+        "respuesta": "Durante la creación del reporte puedes cargar imágenes o documentos."
+      },
+      {
+        "id": 103,
+        "titulo": "¿Qué información debo proporcionar?",
+        "respuesta": "Describe el problema de forma clara e incluye la ubicación."
+      },
+      {
+        "id": 104,
+        "titulo": "¿Puedo cancelar un reporte?",
+        "respuesta": "Sí, siempre que aún no haya sido atendido."
+      },
+      {
+        "id": 105,
+        "titulo": "¿Cómo consultar mis reportes?",
+        "respuesta": "Ingresa a la sección 'Mis reportes' desde el menú principal."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "tema": "Reportes",
+    "preguntas": [
+      {
+        "id": 201,
+        "titulo": "¿Cómo dar seguimiento a un reporte?",
+        "respuesta": "Puedes revisar el estado desde la sección 'Mis reportes'."
+      },
+      {
+        "id": 202,
+        "titulo": "¿Cuánto tiempo tarda la atención?",
+        "respuesta": "Depende del tipo de incidencia y la carga operativa."
+      },
+      {
+        "id": 203,
+        "titulo": "¿Qué significan los estados del reporte?",
+        "respuesta": "Pendiente, En proceso, Atendido y Cerrado."
+      },
+      {
+        "id": 204,
+        "titulo": "¿Puedo reabrir un reporte?",
+        "respuesta": "Sí, si el problema persiste después del cierre."
+      },
+      {
+        "id": 205,
+        "titulo": "¿Cómo recibo notificaciones?",
+        "respuesta": "Las actualizaciones se mostrarán dentro de la plataforma."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "tema": "Cuenta",
+    "preguntas": [
+      {
+        "id": 301,
+        "titulo": "¿Cómo cambiar mi contraseña?",
+        "respuesta": "Desde la configuración de perfil selecciona 'Cambiar contraseña'."
+      },
+      {
+        "id": 302,
+        "titulo": "¿Cómo actualizar mis datos?",
+        "respuesta": "Accede a tu perfil y modifica la información requerida."
+      },
+      {
+        "id": 303,
+        "titulo": "¿Qué hago si olvidé mi contraseña?",
+        "respuesta": "Utiliza la opción 'Recuperar contraseña' en la pantalla de acceso."
+      },
+      {
+        "id": 304,
+        "titulo": "¿Puedo cambiar mi correo electrónico?",
+        "respuesta": "Sí, desde la sección de perfil."
+      },
+      {
+        "id": 305,
+        "titulo": "¿Cómo cerrar sesión?",
+        "respuesta": "Haz clic en tu perfil y selecciona 'Cerrar sesión'."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "tema": "Privacidad",
+    "preguntas": [
+      {
+        "id": 401,
+        "titulo": "¿Cómo se protegen mis datos?",
+        "respuesta": "La información es almacenada siguiendo medidas de seguridad establecidas."
+      },
+      {
+        "id": 402,
+        "titulo": "¿Quién puede ver mis reportes?",
+        "respuesta": "Solo el personal autorizado y el usuario propietario."
+      },
+      {
+        "id": 403,
+        "titulo": "¿Se comparte mi información?",
+        "respuesta": "Únicamente cuando exista fundamento legal para ello."
+      },
+      {
+        "id": 404,
+        "titulo": "¿Cómo solicitar la eliminación de mis datos?",
+        "respuesta": "Contacta al administrador de la plataforma."
+      },
+      {
+        "id": 405,
+        "titulo": "¿Dónde consultar el aviso de privacidad?",
+        "respuesta": "Está disponible en el pie de página de la plataforma."
+      }
+    ]
+  }
+]

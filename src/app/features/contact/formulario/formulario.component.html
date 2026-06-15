@@ -1,10 +1,22 @@
-<div class="list-group px-4">
-    @for (item of contactFields; track $index) {
-    <label class="form-label form-title" name="item.name">{{item.label}}</label>
-    <input *ngIf="item.type !== 'textarea'" [type]="item.type"  [name]="item.name" class="form-control" [placeholder]="item.placeholder">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="list-group px-4 overflow-auto ">
+  @for (item of contactFields; track item.name) {
+  <label class="form-label form-title" name="item.name" >{{item.label}}</label>
+  <input *ngIf="item.type !== 'textarea'" [type]="item.type" [name]="item.name"[formControlName]="item.name" class="form-control"
+    [placeholder]="item.placeholder">
 
-    <textarea *ngIf="item.type === 'textarea'" class="form-control" rows="5" [placeholder]="item.placeholder">
+  <textarea *ngIf="item.type === 'textarea'" class="form-control" rows="5"[formControlName]="item.name" [placeholder]="item.placeholder">
   </textarea>
+
+  @if (form.get(item.name)?.invalid && form.get(item.name)?.touched) {
+  <div class="text-danger small mt-1">
+    @if (this.form.get(item.name)?.hasError('required')) {
+    <span>Este campo es obligatorio.</span>
+    }@if (this.form.get(item.name)?.hasError('email')) {
+    <span>El correo ingresado no es válido.</span>
     }
-    <button class="btn form-button"><i class="bi bi-send"></i>  Enviar mensaje</button>
-</div>
+  </div>
+
+  }
+  }
+  <button class="btn form-button" type="submit"><i class="bi bi-send"></i> Enviar mensaje</button>
+</form> 

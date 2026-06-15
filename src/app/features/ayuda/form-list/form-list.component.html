@@ -1,0 +1,24 @@
+<div class="px-4">
+
+  @if (selectFromGrup) {
+  @for (grup of selectFromGrup; track $index) {
+  <!--Ejemplo de acordion y si funciona al pasar los id y comparar-->
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> {{grup.titulo}} </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>{{grup.respuesta}}</p>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+  }
+  }@else {
+  <div class=" d-flex justify-content-center align-items-center m-auto" style="height: 500px;" >
+    <h3 class=" text-secondary sin-reports"><i class="bi bi-inbox fs-1 text-secondary"></i> No hay preguntas cargadas</h3>
+  </div>
+  }
+
+
+
+</div>
