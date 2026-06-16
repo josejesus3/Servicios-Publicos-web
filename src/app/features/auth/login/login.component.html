@@ -21,15 +21,28 @@
                             Accede a tu cuenta para continuar.
                         </p>
 
-                        <form>
+                        <form [formGroup]="form" (ngSubmit)="login()">
 
                             <div>
                                 <label class="form-label">
                                     Correo Electrónico
                                 </label>
 
-                                <input type="email" name="email" class="form-control" [(ngModel)]="email" placeholder="Escribe un correo electrónico...">
+                                <input type="email" name="email" class="form-control" formControlName="email"
+                                    placeholder="Escribe un correo electrónico...">
+                                <div *ngIf="form.get('email')?.invalid &&  form.get('email')?.touched">
+                                    <div class="text-danger  small">
+                                    @if (form.get('email')?.hasError('required')) {
+                                    <span class=""> Este campo esta incompleto</span>
+                                    }
+                                    @if (form.get('email')?.hasError('email')) {
+                                    <span class=""> El campo correo es invalido</span>
+
+                                    }
+                                    </div>
+                                </div>
                             </div>
+
 
                             <div>
                                 <label class="form-label">
@@ -37,9 +50,17 @@
                                 </label>
 
                                 <div class="password-box">
-                                    <input type="password" name="password" class="form-control" [(ngModel)]="password" placeholder="Escribe una contraseña">
+                                    <input type="password" name="password" class="form-control"
+                                        formControlName="password" [(ngModel)]="password" placeholder="Escribe una contraseña">
 
                                     <i class="bi bi-eye"></i>
+                                </div>
+                                <div *ngIf="form.get('password')?.invalid &&  form.get('password')?.touched">
+                                    <div class="text-danger  small mt-1">
+                                    @if (form.get('password')?.hasError('required')) {
+                                    <span class=""> Este campo esta incompleto</span>
+                                    }
+                                    </div>
                                 </div>
                             </div>
 
@@ -59,7 +80,7 @@
 
                             </div>
 
-                            <button type="submit" class="btn btn-login w-100" (click)="login()">
+                            <button type="submit" class="btn btn-login w-100">
                                 <i class="bi bi-send"></i>
                                 Iniciar sesión
                             </button>

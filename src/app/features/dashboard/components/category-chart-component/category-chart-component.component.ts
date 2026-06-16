@@ -26,6 +26,8 @@ export class CategoryChartComponentComponent implements OnInit {
     this.http.get<any>(`${this.apiUrl}/areas`).subscribe({
       next:(response)=>{
       this.areas=response.data;
+      console.log(this.areas);
+      
       }
     });
 

@@ -1,1 +1,70 @@
-<p>incident-list works!</p>
+<div class="row">
+
+    <div class="incident-container overflow-y-auto">
+        @if (incident &&incident.length>0) {
+        @for (item of incident; track $index) {
+        <div class="custom-card">
+            <div class="row align-items-center g-3">
+                <!-- Icono + Información -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="incident-info">
+                        <div class="circle">
+                            @if (item.media && item.media.length==0) {
+                                <img src="logogob.jpeg" alt="" class="img-fluid ">
+                            }@else {
+                                <img src="logogob.jpeg" alt="" class="img-fluid ">
+                            }
+                        </div>
+                        <div class="incident-text">
+                            <h6 class="incident-title">
+                                {{item.title}}
+
+
+                            </h6>
+                            <p class="incident-description">
+                                {{item.description}}
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--Categoria-->
+
+                <div class="col-lg-2 col-md-2">
+                    <i [class]="getIconos(item.area['name'])" ></i>
+                    {{item.area['name']}}
+                </div>
+                <!--Direccion-->
+                <div class="col-lg-2 col-md-1">
+                    <div class="incident-date">
+                        {{item.direction}}
+                    </div>
+                </div>
+                <!-- Fecha -->
+                <div class="col-lg-3 col-md-2 ps-5">
+                    <div class="incident-date">
+                        {{item.created_at | date:'dd MMM yyyy'}}
+                        <br>
+                        <small>
+                            {{item.created_at | date:'hh:mm a'}}
+                        </small>
+                    </div>
+                </div>
+                <!-- Estado -->
+                <div class="col-lg-2 col-md-4">
+                    <div class="card-status" [ngStyle]="{'background':getStatus(item.status)}">{{item.status}} </div>
+                </div>
+            </div>
+        </div>
+        }
+
+        }@else{
+        <div class="d-flex justify-content-center align-items-center " style="height: 300px;">
+            <h3 class="m-0 text-secondary"><i class="bi bi-inbox fs-1 text-secondary"></i> No hay reportes</h3>
+        </div>
+        }
+    </div>
+    <div class="position ">
+        <p>paginacion</p>
+    </div>
+</div>

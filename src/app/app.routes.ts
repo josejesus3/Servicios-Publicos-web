@@ -6,6 +6,7 @@ import { CategoryChartComponentComponent } from './features/dashboard/components
 import { ContactComponent } from './features/contact/contact.component';
 import { AyudaComponent } from './features/ayuda/ayuda.component';
 import { AuthGuard} from './core/guards/auth.guard';
+import { IncidentsComponent } from './features/incidents/incidents.component';
 
 export const routes: Routes = [
     {path:'',component:LayautComponent,
@@ -13,7 +14,8 @@ export const routes: Routes = [
             {path:'',component:DashboardComponent},
             { path: 'inicio', component: DashboardComponent },
             { path: 'contactos', component: ContactComponent },
-            {path:'ayuda',component:AyudaComponent}
+            {path:'ayuda',component:AyudaComponent},
+            {path:'misReportes',component:IncidentsComponent}
 
         ]
     },
