@@ -1,22 +1,25 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="list-group px-4 overflow-auto ">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class=" px-4">
   @for (item of contactFields; track item.name) {
-  <label class="form-label form-title" name="item.name" >{{item.label}}</label>
-  <input *ngIf="item.type !== 'textarea'" [type]="item.type" [name]="item.name"[formControlName]="item.name" class="form-control"
-    [placeholder]="item.placeholder">
+  <label class="form-label form-title" name="item.name">{{item.label}}</label>
+  <input *ngIf="item.type !== 'textarea'" [type]="item.type" [name]="item.name" [formControlName]="item.name"
+    class="form-control" [placeholder]="item.placeholder">
 
-  <textarea *ngIf="item.type === 'textarea'" class="form-control" rows="5"[formControlName]="item.name" [placeholder]="item.placeholder">
+  <textarea *ngIf="item.type === 'textarea'" class="form-control" rows="5" [formControlName]="item.name"
+    [placeholder]="item.placeholder">
   </textarea>
 
-  @if (form.get(item.name)?.invalid && form.get(item.name)?.touched) {
-  <div class="text-danger small mt-1">
-    @if (this.form.get(item.name)?.hasError('required')) {
-    <span>Este campo es obligatorio.</span>
-    }@if (this.form.get(item.name)?.hasError('email')) {
-    <span>El correo ingresado no es válido.</span>
+  <div class="error-container">
+    @if (form.get(item.name)?.invalid && form.get(item.name)?.touched) {
+    <mat-error class="text-danger small m-0 p-0">
+      @if (this.form.get(item.name)?.hasError('required')) {
+      <span>Este campo es obligatorio.</span>
+      }@if (this.form.get(item.name)?.hasError('email')) {
+      <span>El correo ingresado no es válido.</span>
+      }
+    </mat-error>
+
     }
   </div>
-
-  }
   }
   <button class="btn form-button" type="submit"><i class="bi bi-send"></i> Enviar mensaje</button>
-</form> 
+</form>

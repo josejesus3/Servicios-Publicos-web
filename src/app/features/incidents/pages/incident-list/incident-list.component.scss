@@ -81,6 +81,7 @@
 /* STATUS */
 /* ===================== */
 .card-status {
+    width: 160px;
     height: 35px;
     border-radius: 30px;
     padding: 0 16px;
@@ -95,6 +96,11 @@
 .position{
     text-align: end;
 }
+.custom-paginator{
+    font-size: 15px;
+}
+
+
 
 /* ===================== */
 /* RESPONSIVE */

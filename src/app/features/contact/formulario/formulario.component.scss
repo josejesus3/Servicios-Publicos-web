@@ -1,8 +1,8 @@
 .form-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   color: #2d3436;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 .form-control{
   font-size: 16.5px;
@@ -47,4 +47,7 @@
   outline: none !important;
   box-shadow: none !important;
 
+}
+.error-container{
+  min-height: 8px;
 }

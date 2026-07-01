@@ -1,1 +1,130 @@
-<p>incident-create works!</p>
+<div class="ps-4">
+
+  <h2 *ngIf="id!=0" mat-dialog-title>Editar Reporte</h2>
+  <h2 *ngIf="id==0" mat-dialog-title>Nuevo Reporte</h2>
+
+
+  <p class="subtitle">
+    Completa el formulario para reportar una situación en tu comunidad.
+  </p>
+</div>
+<mat-dialog-content>
+  <div class="grid">
+    <!-- IZQUIERDA -->
+    <form class="list-group" [formGroup]="form">
+
+      <label>Título *</label>
+
+      <input class="custom-input" type="text" formControlName="title"
+        placeholder="Escribe un título breve y descriptivo">
+      @if (form.get('title')?.invalid&&form.get('title')?.touched) {
+      <div class="text-danger small p-0 m-0">
+        @if (form.get('title')?.hasError('required')) {
+        Este Campo es requerido
+        }
+      </div>
+      }
+
+      <label>Descripción *</label>
+
+      <textarea rows="8" class="custom-input" formControlName="description"
+        placeholder="Describe el problema con el mayor detalle posible">
+      </textarea>
+      @if (form.get('description')?.invalid&&form.get('description')?.touched) {
+      <div class="text-danger small p-0 m-0">
+        @if (form.get('description')?.hasError('required')) {
+        Este Campo es requerido
+        }
+      </div>
+      }
+
+      <label>Dirección *</label>
+
+      <input class="custom-input" type="text" formControlName="direction" placeholder="Ingresa la dirección exacta">
+      @if (form.get('direction')?.invalid&&form.get('direction')?.touched) {
+      <div class="text-danger small p-0 m-0">
+        @if(form.get('direction')?.hasError('required')){
+        Este Campo es requerido
+
+        }
+      </div>
+
+      }
+
+
+
+
+      <button class="location-btn">
+        📍 Usar mi ubicación
+      </button>
+
+    </form>
+
+    <!-- DERECHA -->
+    <div>
+
+      <label>Categoría *</label>
+
+      <div class="category-grid" [formGroup]="form">
+
+        @for(item of areas; track item.name){
+
+        <button type="button" class="category-card" [class.active]="selectedCategory === item.id"
+          (click)="selectCate(item.id)">
+
+          <span [class]="getIconos(item.name)">
+          </span>
+
+          <span>
+            {{item.name}}
+          </span>
+
+        </button>
+
+        }
+
+      </div>
+      @if (form.get('area_id')?.invalid&&form.get('area_id')?.touched) {
+      <div class="text-danger small p-0 m-0">
+        @if (form.get('area_id')?.hasError('required')) {
+        Este Campo es requerido
+        }
+      </div>
+      }
+
+
+      <div class="upload-container">
+
+        <h5>Agregar fotos (opcional)</h5>
+
+        <div class="dropzone">
+
+          <mat-icon>cloud_upload</mat-icon>
+
+          <p>Arrastra y suelta tus imágenes aquí</p>
+
+          <small>o haz clic para seleccionar</small>
+
+          <input type="file" multiple hidden>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+  <button mat-button (click)="close()">
+    Cancelar
+  </button>
+
+  <button mat-raised-button color="primary" (click)="submit()">
+    Enviar reporte
+  </button>
+
+</mat-dialog-actions>

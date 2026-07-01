@@ -8,7 +8,7 @@ import { NavbarComponent } from "../../shared/components/navbar/navbar.component
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CategoryComponentComponent, HeaderComponentComponent, ChartSummaryComponent, LoginComponent, NavbarComponent],
+  imports: [CategoryComponentComponent, HeaderComponentComponent, ChartSummaryComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })

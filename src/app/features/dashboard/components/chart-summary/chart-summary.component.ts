@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
 import { CommonModule } from '@angular/common';
+import { IncidentService } from '../../../../core/services/incident.service';
+import { Area } from '../../../../core/models/area/areaRequest.model';
+import { Incident } from '../../../../core/models/incident/incidentRequest.model';
 
 @Component({
   selector: 'app-chart-summary',
@@ -11,27 +14,22 @@ import { CommonModule } from '@angular/common';
   styleUrl: './chart-summary.component.scss'
 })
 export class ChartSummaryComponent implements OnInit {
-
-  private http = inject(HttpClient);
-  private apiUrl = environment.ApiUrl;
-  incident: any[] = [];
-  areas: any[] = [];
+  incidentService = inject(IncidentService)
+  incident: Incident[] = [];
   ngOnInit(): void {
     this.getIncident();
   }
-
+  //this.areas = response.data.data.map((item: any) => item.area);
 
   getIncident() {
-    return this.http.get<any>(`${this.apiUrl}/incident`).subscribe({
+    return this.incidentService.getIncident().subscribe({
       next: (response) => {
         this.incident = response.data.data;
-        this.areas = response.data.data.map((item: any) => item.area);
-
-
       }, error: (err) => {
         console.error('Error:', err);
       }
-    });
+    }
+    );
   }
   getIconos(categorias: string) {
     const iconos: any = {
@@ -49,7 +47,7 @@ export class ChartSummaryComponent implements OnInit {
   }
   getStatus(status: string) {
     const statusColor: any = {
-      'pendiente': '#FFF3CD',     // Amarillo suave (pendiente de atención)
+      'pendiente': '#f54a24c1',     // Amarillo suave (pendiente de atención)
       'en_proceso': '#CFE2FF',    // Azul suave (trabajándose)
       'finalizado': '#D1E7DD'     // Verde suave (completado)
     };

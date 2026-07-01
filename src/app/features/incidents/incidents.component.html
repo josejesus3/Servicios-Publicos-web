@@ -5,7 +5,7 @@
             <p style="color: #626060f1; font-size: 18px;">Consulta el estado de los reportes que has realizado.</p>
         </div>
         <div class="col-lg-2 ">
-            <button class="btn report-button">
+            <button class="btn report-button" (click)="openDialog()">
                 <i class="bi bi-plus-circle-fill me-2"></i>
                 Nuevo Reporte
             </button>
@@ -23,12 +23,14 @@
             <h5 class="col-lg-2 text-center">Fecha </h5>
             <h5 class="col-lg-3 text-end">Estado </h5>
         </div>
-        <app-incident-list></app-incident-list>
+        <app-incident-list [incident]="incident" [pageCurret]="pageCurret"
+        (refresh)="getIncident()"></app-incident-list>
+
     </div>
 
     <div>
-        
+
     </div>
 
-    
+
 </div>

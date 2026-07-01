@@ -40,6 +40,19 @@ html, body { height: 100%; }
 h1 {
   text-align: center;
 }
+.mi-popup {
+  border-radius: 18px !important;
+  width: 400px !important;
+  margin: 0;
+}
+.btn-eliminar{
+  background: #f44336da;
+}
+.btn-eliminar:hover{
+  background: #F44336;
+}
+
+
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }

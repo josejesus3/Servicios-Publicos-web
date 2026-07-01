@@ -1,0 +1,104 @@
+/* ===========================
+   Footer - Enlaces rápidos
+=========================== */
+
+.footer-links {
+    padding: 0 .6rem;
+    margin-bottom: 1rem;
+    border-left: 1px solid #ECECEC;
+}
+
+.footer-links h6 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+
+    margin-bottom: .8rem;
+
+    font-size: .92rem;
+    font-weight: 700;
+    color: #1F2937;
+}
+
+.footer-links h6 i {
+    color: #FF6A00;
+    font-size: .9rem;
+}
+
+.footer-links h6::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+
+    width: 28px;
+    height: 2px;
+
+    background: #FF6A00;
+    border-radius: 50px;
+}
+
+.footer-links ul {
+    margin: 0;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: .25rem;
+}
+
+.footer-links a {
+    display: flex;
+    align-items: flex-start;
+    gap: .45rem;
+
+    color: #6B7280;
+    text-decoration: none;
+
+    font-size: .82rem;
+    font-weight: 500;
+    line-height: 1.15;
+
+    transition: all .2s ease;
+}
+
+.footer-links a div {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.footer-links a small {
+    margin: 0;
+    font-size: .68rem;
+    line-height: 1;
+    color: #9CA3AF;
+}
+
+.footer-links a i {
+    width: 14px;
+    font-size: .82rem;
+    margin-top: 1px;
+
+    color: #6B7280;
+    transition: .2s ease;
+}
+
+.footer-links a:hover {
+    color: #FF6A00;
+    transform: translateX(2px);
+}
+
+.footer-links a:hover i {
+    color: #FF6A00;
+}
+
+@media (max-width: 992px) {
+    .footer-links {
+        border-left: none;
+        border-top: 1px solid #ECECEC;
+        margin-top: 1rem;
+        padding-top: 1rem;
+    }
+}

@@ -1,39 +1,80 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, inject, OnInit } from '@angular/core';
-import { environment } from '../../../../../environments/environment';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTooltip } from '@angular/material/tooltip';
+import { RouterLink } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
+
+import { Incident } from '../../../../core/models/incident/incidentRequest.model';
+import { IncidentService } from '../../../../core/services/incident.service';
+import { IncidentCreateComponent } from '../incident-create/incident-create.component';
 
 @Component({
   selector: 'app-incident-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatPaginatorModule, MatTooltip, RouterLink],
   templateUrl: './incident-list.component.html',
   styleUrl: './incident-list.component.scss'
 })
-export class IncidentListComponent implements OnInit {
+export class IncidentListComponent {
 
-  private http = inject(HttpClient);
-  private apiUrl = environment.ApiUrl;
-  incident: any[] = [];
-  areas: any[] = [];
-  ngOnInit(): void {
-    this.getIncident();
-  }
+  @Input() incident: Incident[] = [];
+  @Input() pageCurret!: any;
+  @Output() refresh = new EventEmitter();
 
+  readonly dialog = inject(MatDialog);
+  private incidenService = inject(IncidentService);
 
-  getIncident() {
-    return this.http.get<any>(`${this.apiUrl}/incident`).subscribe({
-      next: (response) => {
-        this.incident = response.data.data;
-        this.areas = response.data.data.map((item: any) => item.area);
-        console.log(this.incident);
-
-
-      }, error: (err) => {
-        console.error('Error:', err);
+  confirmaEliminar(id: number) {
+    Swal.fire({
+      title: '¿Eliminar?',
+      text: 'No podrás recuperarlo.',
+      icon: 'warning',
+      position:'center',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+      customClass: {
+        popup: 'mi-popup',
+        confirmButton: 'btn-eliminar'
+      }
+    }).then(result => {
+      if (result.isConfirmed) {
+        this.deleteIncident(id);
       }
     });
   }
+
+  deleteIncident(id: number): void {
+    this.incidenService.destroyIncident(id).subscribe({
+      next: () => {
+        this.refresh.emit();
+        this.showDeleteSuccess();
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+  }
+
+  private showDeleteSuccess(): void {
+    Swal.fire({
+      html: `
+        <h3>Eliminado</h3>
+        <p>El reporte se eliminó correctamente.</p>
+      `,
+      showConfirmButton: false,
+      timer: 2000,
+      icon: 'error',
+      background: '#fff',
+      position:'center',
+      customClass: {
+        popup: 'mi-popup'
+      }
+    });
+  }
+
   getIconos(categorias: string) {
     const iconos: any = {
       'Limpieza': 'bi bi-trash-fill text-info fs-3',
@@ -48,17 +89,43 @@ export class IncidentListComponent implements OnInit {
 
     return iconos[categorias] || 'fa-solid fa-circle-info';
   }
+
   getStatus(status: string) {
     const statusColor: any = {
-      'pendiente': '#FFF3CD',     // Amarillo suave (pendiente de atención)
-      'en_proceso': '#CFE2FF',    // Azul suave (trabajándose)
-      'finalizado': '#D1E7DD'     // Verde suave (completado)
+      'pendiente': '#f54a24c1',
+      'en_proceso': '#CFE2FF',
+      'finalizado': '#D1E7DD'
     };
 
     return statusColor[status];
   }
 
+  openDialog(incident: Incident): void {
+    const dialogRef = this.dialog.open(IncidentCreateComponent, {
+      data: incident,
+      width: '750px',
+      maxWidth: '1000px',
+      height: '700px',
+      disableClose: true
+    });
 
-
-
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.refresh.emit();
+        Swal.fire({
+          showConfirmButton: false,
+          icon: 'success',
+          html: `
+        <h3>Actualizado</h3>
+        <p>El reporte se actualizo correctamente.</p>
+      `,
+          timer: 1700,
+          position:'center',
+          customClass: {
+            popup: 'mi-popup'
+          }
+        })
+      }
+    });
+  }
 }

@@ -1,12 +1,13 @@
 import { NgIf } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatError } from "@angular/material/form-field";
 
 
 @Component({
   selector: 'app-formulario',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule],
+  imports: [NgIf, ReactiveFormsModule, MatError],
   templateUrl: './formulario.component.html',
   styleUrl: './formulario.component.scss'
 })
