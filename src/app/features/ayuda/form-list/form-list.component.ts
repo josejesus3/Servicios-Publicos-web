@@ -34,8 +34,6 @@ export class FormListComponent implements OnInit, OnChanges {
       );
       this.selectFromGrup = grupo?.preguntas ?? [];
     });
-
-
   }
 
 }

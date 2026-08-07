@@ -22,7 +22,7 @@ export class ChartSummaryComponent implements OnInit {
   //this.areas = response.data.data.map((item: any) => item.area);
 
   getIncident() {
-    return this.incidentService.getIncident().subscribe({
+    return this.incidentService.getIncidentAll().subscribe({
       next: (response) => {
         this.incident = response.data.data;
       }, error: (err) => {

@@ -1,55 +1,76 @@
-<div class="ps-4">
+<div class="report-header">
+  <div class="header-content">
 
-  <h2 *ngIf="id!=0" mat-dialog-title>Editar Reporte</h2>
-  <h2 *ngIf="id==0" mat-dialog-title>Nuevo Reporte</h2>
+    <div class="header-icon">
+      <i class="bi bi-clipboard2-check"></i>
+    </div>
 
+    <div>
+      <h3>{{ id != 0 ? 'Editar Reporte' : 'Nuevo Reporte' }}</h3>
+      <p>
+        Ayúdanos a mejorar tu comunidad. Completa el formulario para reportar
+        una situación.
+      </p>
+    </div>
 
-  <p class="subtitle">
-    Completa el formulario para reportar una situación en tu comunidad.
-  </p>
+  </div>
+
+  <div class="header-wave"></div>
 </div>
+
 <mat-dialog-content>
-  <div class="grid">
+  <div>
     <!-- IZQUIERDA -->
-    <form class="list-group" [formGroup]="form">
+    <form class="list-group " [formGroup]="form">
 
-      <label>Título *</label>
+      <label><i class="bi bi-card-text" style="color: #F97316;"></i> Título *</label>
 
-      <input class="custom-input" type="text" formControlName="title"
-        placeholder="Escribe un título breve y descriptivo">
-      @if (form.get('title')?.invalid&&form.get('title')?.touched) {
-      <div class="text-danger small p-0 m-0">
-        @if (form.get('title')?.hasError('required')) {
-        Este Campo es requerido
+      <mat-form-field class="matField" appearance="outline">
+        <input matInput type="text" formControlName="title" placeholder="Escribe un título breve y descriptivo">
+        @if (form.get('title')?.invalid&&form.get('title')?.touched) {
+        <mat-error>
+          @if (form.get('title')?.hasError('required')) {
+          Este Campo es requerido
+          }
+        </mat-error>
         }
-      </div>
-      }
+      </mat-form-field>
 
-      <label>Descripción *</label>
+      <label><i class="bi bi-chat-left-text" style="color: #F97316;"></i> Descripción *</label>
 
-      <textarea rows="8" class="custom-input" formControlName="description"
-        placeholder="Describe el problema con el mayor detalle posible">
+      <mat-form-field appearance="outline" class="matField">
+        <textarea matInput rows="8" class="custom-input" formControlName="description"
+          placeholder="Describe el problema con el mayor detalle posible">
       </textarea>
-      @if (form.get('description')?.invalid&&form.get('description')?.touched) {
-      <div class="text-danger small p-0 m-0">
-        @if (form.get('description')?.hasError('required')) {
-        Este Campo es requerido
+
+        <mat-hint align="end">
+          {{form.get('description')?.value?.length ||0}}/200
+        </mat-hint>
+        @if (form.get('description')?.invalid&&form.get('description')?.touched ) {
+        <mat-error>
+          @if (form.get('description')?.hasError('required')) {
+          Este Campo es requerido
+          }
+          @if (form.get('description')?.hasError('maxlength')&& form.get('description')?.errors) {
+          Has alcanzado el límite máximo de 200 caracteres.
+          }
+        </mat-error>
         }
-      </div>
-      }
+      </mat-form-field>
 
-      <label>Dirección *</label>
+      <label><i class="bi bi-geo-alt" style="color: #F97316;"></i> Dirección *</label>
 
-      <input class="custom-input" type="text" formControlName="direction" placeholder="Ingresa la dirección exacta">
-      @if (form.get('direction')?.invalid&&form.get('direction')?.touched) {
-      <div class="text-danger small p-0 m-0">
-        @if(form.get('direction')?.hasError('required')){
-        Este Campo es requerido
+      <mat-form-field appearance="outline" class="matField">
+        <input matInput type="text" formControlName="direction" placeholder="Ingresa la dirección exacta">
+        @if (form.get('direction')?.invalid&&form.get('direction')?.touched) {
+        <mat-error>
+          @if(form.get('direction')?.hasError('required')){
+          Este Campo es requerido
 
+          }
+        </mat-error>
         }
-      </div>
-
-      }
+      </mat-form-field>
 
 
 
@@ -61,9 +82,9 @@
     </form>
 
     <!-- DERECHA -->
-    <div>
+    <div class="">
 
-      <label>Categoría *</label>
+      <label><i class="bi bi-grid" style="color: #F97316;"></i> Categoría *</label>
 
       <div class="category-grid" [formGroup]="form">
 
@@ -81,7 +102,10 @@
 
         </button>
 
+
+
         }
+        
 
       </div>
       @if (form.get('area_id')?.invalid&&form.get('area_id')?.touched) {
@@ -104,8 +128,15 @@
           <p>Arrastra y suelta tus imágenes aquí</p>
 
           <small>o haz clic para seleccionar</small>
+          <label for="fileUpload" class="upload-btn">
+            Elegir archivos
+          </label>
 
-          <input type="file" multiple hidden>
+          <input id="fileUpload" type="file" multiple (change)="onFileSelected($event)" accept="image/*,video/*">
+
+          <span>
+            {{ selectfileMedia.length ? selectfileMedia.length + ' archivos seleccionados' : 'Sin archivos seleccionados' }}
+          </span>
 
         </div>
 
@@ -114,17 +145,17 @@
     </div>
 
   </div>
-
 </mat-dialog-content>
 
-<mat-dialog-actions align="end">
+<mat-dialog-actions align="end" class="bg-white">
 
-  <button mat-button (click)="close()">
+  <button mat-button style="background: #F8F8FF;color: #898989;" (click)="close()">
     Cancelar
   </button>
 
-  <button mat-raised-button color="primary" (click)="submit()">
-    Enviar reporte
+  <button mat-raised-button style="background: #f77417; color: white;" (click)="submit()">
+    <i class="bi bi-send me-2"></i> Enviar reporte
   </button>
+
 
 </mat-dialog-actions>

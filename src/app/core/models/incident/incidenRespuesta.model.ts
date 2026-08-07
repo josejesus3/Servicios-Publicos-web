@@ -6,4 +6,5 @@ export interface IncidentRequest {
   latitude?: number | 0.0;
   longitude?: number | 0.0;
   status?: string;
+  media?:File[];
 }

@@ -4,7 +4,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
 }
-
+.form-title{
+  color: #6c757d;
+}
+.matField{
+  width: 100%;
+  --mdc-outlined-text-field-container-shape: 12px;
+}
 .main-auth-container {
   position: relative;
   min-height: 100vh;
@@ -155,6 +161,24 @@ body {
   width:300px;
   display: block;
   
+}
+::ng-deep .matField .mat-mdc-text-field-wrapper {
+  height: 50px !important;
+}
+
+::ng-deep .matField .mat-mdc-form-field-flex {
+  height: 50px !important;
+  align-items: center !important;
+}
+
+::ng-deep .matField .mat-mdc-form-field-infix {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  min-height: 50px !important;
+}
+
+::ng-deep .matField input.mat-mdc-input-element {
+  margin-top: -8px !important;
 }
 
 /* Responsive */

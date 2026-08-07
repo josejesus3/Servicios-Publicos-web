@@ -21,8 +21,7 @@
     padding: 16px 20px;
     margin-bottom: 12px;
     transition: .25s;
-    box-shadow:
-        0 2px 8px rgba(0, 0, 0, .03);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
 }
 
 .custom-card:hover {
@@ -41,13 +40,23 @@
 }
 
 .circle {
-    width: 55px;
-    height: 55px;
-    min-width: 55px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+}
+
+.circle img {
+    max-width: 100px;
+    max-height: 80px;
+    object-fit: contain;
+}
+
+.img-active:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, .12);
+    border: 1px;
+    border-radius: 20px;
 }
 
 .incident-title {
@@ -93,11 +102,14 @@
     text-transform: capitalize;
     color: #343a40;
 }
-.position{
+
+.position {
     text-align: end;
 }
-.custom-paginator{
+
+.custom-paginator {
     font-size: 15px;
+    background: white;
 }
 
 

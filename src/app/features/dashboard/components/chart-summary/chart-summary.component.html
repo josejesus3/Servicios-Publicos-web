@@ -9,7 +9,7 @@
             </div>
             <div class="incident-container">
                 @if (incident &&incident.length>0) {
-                @for (item of incident.slice(0,5); track $index) {
+                @for (item of incident; track $index) {
                 <div class="custom-card">
                     <div class="row align-items-center g-3">
                         <!-- Icono + Información -->

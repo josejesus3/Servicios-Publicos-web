@@ -12,15 +12,19 @@ export class IncidentService {
     private apiUrl = environment.ApiUrl;
     private http = inject(HttpClient);
 
-    getIncident(): Observable<any> {
-        return this.http.get<any>(`${this.apiUrl}/incident`);
+    getIncidentAll(): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/getIncident`);
     }
 
-    postIncident(incident:IncidentRequest):Observable<any>{
+    getIncident(page: number, perPage: number): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/incident?page=${page}&per_page=${perPage}`);
+    }
+
+    postIncident(incident:FormData):Observable<any>{
      return this.http.post(`${this.apiUrl}/incident`,incident);
 
     }
-    putIncident(id:number,incident:IncidentRequest):Observable<any>{
+    putIncident(id:number,incident:FormData):Observable<any>{
      return this.http.put(`${this.apiUrl}/incident/${id}`,incident);
     }
     destroyIncident(id:number):Observable<any>{

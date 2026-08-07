@@ -4,13 +4,18 @@
     <div class="custom-card">
         <div class="row align-items-center g-3">
             <!-- Icono + Información -->
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-4 col-md-7">
                 <div class="incident-info">
                     <div class="circle">
-                        @if (item.media && item.media.length==0) {
-                        <img src="logogob.jpeg" alt="" class="img-fluid ">
-                        }@else {
-                        <img src="logogob.jpeg" alt="" class="img-fluid ">
+                        @if (item.media && item.media.length > 0) {
+                        @if (item.media[0].file_type === 'image') {
+                        <button class="border-0 bg-transparent img-active" (click)="fullDialog(urlImage+item.media[0].file_path)"><img [src]="urlImage+item.media[0].file_path" ></button>
+                        } @else {
+                        <img src="logogob.jpeg" alt="Logo Gobierno" >
+                        }
+                        }
+                        @else {
+                        <img src="logogob.jpeg" alt="Logo Gobierno">
                         }
                     </div>
                     <div class="incident-text">
@@ -39,7 +44,7 @@
                 </div>
             </div>
             <!-- Fecha -->
-            <div class="col-lg-3 col-md-2 ps-5">
+            <div class="col-lg-2 col-md-2 ps-5">
                 <div class="incident-date">
                     {{item.created_at | date:'dd MMM yyyy'}}
                     <br>
@@ -55,15 +60,17 @@
                     <div class="card-status" [ngStyle]="{'background':getStatus(item.status)}">{{item.status}}</div>
 
                     <div class="d-flex flex-column">
-                        <button class="btn btn-sm  border-0 m-0 p-0" matTooltip="Editar Reporte" (click)="openDialog(item)">
+                        <button class="btn btn-sm  border-0 m-0 p-0" matTooltip="Editar Reporte"
+                            (click)="openDialog(item)">
                             <i class="bi bi-pencil-square fs-5" style="color: #2196F3;"></i>
                         </button>
 
-                        <button class="btn btn-sm border-0  m-0 p-0 " matTooltip="Eliminar Reporte" (click)="confirmaEliminar(item.id)">
+                        <button class="btn btn-sm border-0  m-0 p-0 " matTooltip="Eliminar Reporte"
+                            (click)="confirmaEliminar(item.id)">
                             <i class="bi bi-trash fs-5" style="color:#F44336;"></i>
                         </button>
 
-                        <button class="btn btn-sm border-0  m-0 p-0 "  matTooltip="Visualizar Reporte">
+                        <button class="btn btn-sm border-0  m-0 p-0 " matTooltip="Visualizar Reporte" (click)="verDetalle(item)">
                             <i class="bi bi-eye fs-5" style="color: #212121;"></i>
                         </button>
                     </div>
@@ -80,6 +87,8 @@
     </div>
     }
 </div>
-<mat-paginator class="custom-paginator" [length]="pageCurret.current_page" [pageSize]="incident.length"
-    aria-label="Select page">
+@if (pageCurret) {
+    <mat-paginator class="custom-paginator" [length]="pageCurret.total" [pageSize]="pageCurret.per_page"
+    (page)="changePage($event)" aria-label="Select page">
 </mat-paginator>
+}

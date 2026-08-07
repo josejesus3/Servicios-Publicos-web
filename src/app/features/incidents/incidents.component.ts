@@ -4,28 +4,55 @@ import { MatDialog } from '@angular/material/dialog';
 import { IncidentCreateComponent } from './pages/incident-create/incident-create.component';
 import { Incident } from '../../core/models/incident/incidentRequest.model';
 import { IncidentService } from '../../core/services/incident.service';
+import { PageEvent } from '@angular/material/paginator';
+import { environment } from '../../../environments/environment';
+import { MatFormFieldModule,} from "@angular/material/form-field";
+import { MatInput, MatInputModule } from "@angular/material/input";
+import { MatSelect, MatOption, MatSelectChange } from "@angular/material/select";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { NgFor } from '@angular/common';
+
 
 @Component({
   selector: 'app-incidents',
   standalone: true,
-  imports: [IncidentListComponent],
+  imports: [IncidentListComponent, MatFormFieldModule, MatInput, MatSelect, MatOption, ReactiveFormsModule, NgFor],
   templateUrl: './incidents.component.html',
   styleUrl: './incidents.component.scss'
 })
 export class IncidentsComponent implements OnInit {
   readonly dialog = inject(MatDialog);
   incident: Incident[] = [];
-  pageCurret:any;
+  pageCurret: any;
   incidentService = inject(IncidentService);
+  urlImage= environment.UrlImage;
 
   ngOnInit(): void {
     this.getIncident();
+    
   }
-  getIncident() {
-    return this.incidentService.getIncident().subscribe({
+  onPageChange(event: PageEvent) {
+this.getIncident(event.pageIndex+1,event.pageSize);
+  }
+  onFiltro(event:MatSelectChange){
+console.log("data:",event)
+  }
+   onBuscador(event:Event){
+ const valor = (event.target as HTMLInputElement).value;
+
+  console.log(valor);
+  }
+
+  getIncident(page: number = 1, perPage: number = 10) {
+    return this.incidentService.getIncident(page, perPage).subscribe({
       next: (response) => {
         this.incident = response.data.data;
-        this.pageCurret=response.data;
+        this.pageCurret = response.data;
+        this.incident.forEach((media) => {
+         media.media.filter((image)=>{
+          console.log("http://localhost:8000/storage/"+image.file_path);
+         })
+        })
       }, error: (err) => {
         console.error('Error:', err);
       }
@@ -35,8 +62,8 @@ export class IncidentsComponent implements OnInit {
   openDialog(): void {
 
     const dialogRef = this.dialog.open(IncidentCreateComponent, {
-      width: '900px',
-      maxWidth: '1000px',
+      width: '100%',
+      maxWidth: '800px',
       height: '700px',
       disableClose: true
     });

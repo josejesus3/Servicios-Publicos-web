@@ -33,11 +33,7 @@
 
         <!-- BURGER -->
 
-        <button
-            class="navbar-toggler custom-kebab"
-            type="button"
-            [class.active]="isMenuOpen"
-            (click)="toggleMenu()">
+        <button class="navbar-toggler custom-kebab" type="button" [class.active]="isMenuOpen" (click)="toggleMenu()">
 
             <span class="toggler-dot"></span>
             <span class="toggler-dot"></span>
@@ -47,9 +43,7 @@
 
         <!-- MENÚ -->
 
-        <div
-            class="custom-menu-collapse"
-            [class.show]="isMenuOpen">
+        <div class="custom-menu-collapse" [class.show]="isMenuOpen">
 
             <ul class="navbar-nav ms-auto align-items-lg-center">
 
@@ -60,7 +54,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="misReportes" routerLinkActive="active" >
+                    <a class="nav-link" routerLink="misReportes" routerLinkActive="active">
                         Mis Reportes
                     </a>
                 </li>
@@ -77,17 +71,37 @@
                     </a>
                 </li>
 
-                <li  class="nav-item ms-lg-3" >
+                @if (authService.getUser()?.role_id!==1) {
+                <li class="nav-item ms-lg-3">
 
-                    <button class="btn btn-login"routerLink="login" >
+                    @if (!authService.isLoggedIn()) {
+                        <button class="btn btn-login" routerLink="login">
 
                         <i class="bi bi-person"></i>
 
                         Inicio de Sesión
 
                     </button>
+                    }@else {
+                        <button class="btn btn-login" (click)="cerrarSesion()">
+
+                        <i class="bi bi-pencil-square"></i>
+
+                        Cerrar sesión
+
+                    </button>
+
+                    }
 
                 </li>
+                }@else {
+                    <li class="nav-item">
+                    <a class="nav-link" routerLink="administrador" routerLinkActive="active">
+                        Administrador
+                    </a>
+                </li>
+
+                }
 
             </ul>
 

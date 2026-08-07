@@ -12,19 +12,41 @@
         </div>
     </div>
     <div class="buscador-report">
-        botones y buscador
+        <mat-form-field appearance="outline" class="mat-buscador" >
+            <mat-label> <i class="bi bi-search"></i> Buscador por titulo, direccion y categoria</mat-label>
+            <input matInput type="text" (input)="onBuscador($event)">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="filtro" >
+            <mat-label>Categoría</mat-label>
+
+            <mat-select (selectionChange)="onFiltro($event)" >
+                <mat-option value="">Todas</mat-option>
+                <mat-option *ngFor="let cat of incident" [value]="cat.area['name']">{{cat.area['name']}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="filtro" >
+            <mat-label>Estado</mat-label>
+
+            <mat-select (selectionChange)="onFiltro($event)" >
+                <mat-option value="pendiente">pendiente</mat-option>
+                <mat-option value="en_proceso">En proceso</mat-option>
+                <mat-option value="finalizado">Finalizado</mat-option>
+            </mat-select>
+        </mat-form-field>
     </div>
 
     <div class="custom-box">
-        <div class="box-header row">
-            <h5 class="col-lg-3 ">Reportes </h5>
-            <h5 class="col-lg-2">Categorías </h5>
-            <h5 class="col-lg-2">Direccion </h5>
-            <h5 class="col-lg-2 text-center">Fecha </h5>
-            <h5 class="col-lg-3 text-end">Estado </h5>
+        <div class="box-header row bg-body-secondary">
+            <h5 class="col-12 col-lg-4 ps-4">Reportes </h5>
+            <h5 class="col-6 col-lg-2 ps-2">Categorías </h5>
+            <h5 class="col-6 col-lg-2 ps-2">Direccion </h5>
+            <h5 class="col-6 col-lg-2 text-center">Fecha </h5>
+            <h5 class="col-6 col-lg-2 text-end">Estado </h5>
         </div>
-        <app-incident-list [incident]="incident" [pageCurret]="pageCurret"
-        (refresh)="getIncident()"></app-incident-list>
+        <app-incident-list [incident]="incident" [pageCurret]="pageCurret" (refresh)="getIncident()"
+            (pageChange)="onPageChange($event)"></app-incident-list>
 
     </div>
 

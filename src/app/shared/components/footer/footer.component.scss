@@ -304,6 +304,11 @@
    RESPONSIVE
 ========================================================== */
 
+@media (max-width:578px){
+.welcome-badge {
+    display: none;
+}
+}
 @media (max-width: 992px) {
 
     .footer-container {

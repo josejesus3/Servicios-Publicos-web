@@ -1,6 +1,6 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatTooltip } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -9,6 +9,9 @@ import Swal from 'sweetalert2';
 import { Incident } from '../../../../core/models/incident/incidentRequest.model';
 import { IncidentService } from '../../../../core/services/incident.service';
 import { IncidentCreateComponent } from '../incident-create/incident-create.component';
+import { environment } from '../../../../../environments/environment';
+import { ImageFullComponent } from './image-full/image-full.component';
+import { IncidentDetailComponent } from '../incident-detail/incident-detail.component';
 
 @Component({
   selector: 'app-incident-list',
@@ -22,16 +25,22 @@ export class IncidentListComponent {
   @Input() incident: Incident[] = [];
   @Input() pageCurret!: any;
   @Output() refresh = new EventEmitter();
+  @Output() pageChange = new EventEmitter<PageEvent>();
+  urlImage = environment.UrlImage;
 
   readonly dialog = inject(MatDialog);
   private incidenService = inject(IncidentService);
+  changePage(event: PageEvent) {
+    this.pageChange.emit(event);
+    console.log(this.urlImage);
+  }
 
   confirmaEliminar(id: number) {
     Swal.fire({
       title: '¿Eliminar?',
       text: 'No podrás recuperarlo.',
       icon: 'warning',
-      position:'center',
+      position: 'center',
       showCancelButton: true,
       confirmButtonText: 'Sí, eliminar',
       cancelButtonText: 'Cancelar',
@@ -68,7 +77,7 @@ export class IncidentListComponent {
       timer: 2000,
       icon: 'error',
       background: '#fff',
-      position:'center',
+      position: 'center',
       customClass: {
         popup: 'mi-popup'
       }
@@ -120,12 +129,32 @@ export class IncidentListComponent {
         <p>El reporte se actualizo correctamente.</p>
       `,
           timer: 1700,
-          position:'center',
+          position: 'center',
           customClass: {
             popup: 'mi-popup'
           }
         })
       }
     });
+  }
+  fullDialog(img: string) {
+    this.dialog.open(ImageFullComponent, {
+      data: img,
+      width: 'auto',
+      height: 'auto',
+      maxWidth: '95vw',
+      maxHeight: '95vh',
+    })
+  }
+
+  verDetalle(inciden: Incident) {
+    this.dialog.open(IncidentDetailComponent, {
+      data: inciden,
+      width: '750px',
+      maxWidth: '1000px',
+      height: '700px',
+
+    })
+
   }
 }

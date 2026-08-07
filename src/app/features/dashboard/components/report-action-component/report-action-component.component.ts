@@ -16,8 +16,8 @@ export class ReportActionComponentComponent {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(IncidentCreateComponent, {
-      width: '900px',
-      maxWidth: '1000px',
+      width: '100%',
+      maxWidth: '800px',
       height: '700px',
       disableClose: true
     });

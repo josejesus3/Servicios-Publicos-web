@@ -13,6 +13,6 @@ export interface Incident {
   deleted_at: string | null;
   created_at: string;
   updated_at: string;
-  media: any[];
+  media:any[];
   area: Area;
 }

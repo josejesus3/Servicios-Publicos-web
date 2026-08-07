@@ -13,9 +13,7 @@
     display: flex;
     align-items: center;
     gap: .35rem;
-
     margin-bottom: .8rem;
-
     font-size: .92rem;
     font-weight: 700;
     color: #1F2937;
@@ -31,10 +29,8 @@
     position: absolute;
     left: 0;
     bottom: -6px;
-
     width: 28px;
     height: 2px;
-
     background: #FF6A00;
     border-radius: 50px;
 }
@@ -52,14 +48,11 @@
     display: flex;
     align-items: flex-start;
     gap: .45rem;
-
     color: #6B7280;
     text-decoration: none;
-
     font-size: .82rem;
     font-weight: 500;
     line-height: 1.15;
-
     transition: all .2s ease;
 }
 
@@ -80,7 +73,6 @@
     width: 14px;
     font-size: .82rem;
     margin-top: 1px;
-
     color: #6B7280;
     transition: .2s ease;
 }

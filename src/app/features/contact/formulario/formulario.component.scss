@@ -1,18 +1,19 @@
 .form-title {
-  font-size: 16px;
-  font-weight: 500;
-  color: #2d3436;
-  margin-top: 5px;
-}
-.form-control{
-  font-size: 16.5px;
+  color: #6c757d;
+  margin-top: 10px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  margin-left: 33px;
 }
 
-.form-control::placeholder {
-  color: #6c757d;
-  opacity: 1;
-  /* Evita que algunos navegadores lo muestren más transparente */
+.form-subtitle {
+  letter-spacing: 0.3px;
+  line-height: 1.5;
+  font-weight: 300;
+  padding-left: 2rem;
+  padding-top: 10px;
 }
+
 
 .form-button {
   font-size: 18px;
@@ -20,10 +21,8 @@
   color: white;
   border: 1px solid #ff6a00;
   border-radius: 12px;
-  width: 180px;
-  position: absolute;
-  bottom: 15px;
-  right: 20px;
+  width: 90%;
+  margin-top: 30px;
   transition: all .25s ease;
 }
 
@@ -43,11 +42,58 @@
 }
 
 .form-button:focus {
-
   outline: none !important;
   box-shadow: none !important;
 
 }
-.error-container{
-  min-height: 8px;
+.matField{
+  width: 85%;
+  --mdc-outlined-text-field-container-shape: 12px;
+  margin-top: 5px;
+  margin-left: 30px;
+  --mdc-outlined-text-field-focus-outline-color: #ff6a00;
+}
+
+
+.icon-orange {
+  color: #f26822 !important;
+}
+@media (max-width:576px){
+  .matField{
+    width: 90%;
+  --mdc-outlined-text-field-container-shape: 12px;
+  margin-top: 5px;
+  --mdc-outlined-text-field-focus-outline-color: #ff6a00;
+}
+
+.form-button {
+  width: 82%;
+}
+
+.form-subtitle {
+  letter-spacing: 0.3px;
+  line-height: 1.5;
+  font-weight: 300;
+  padding-top: 10px;
+}
+
+}
+@media (min-width:1024px){
+  .form-title{
+    margin-left: 25px;
+  }
+ .matField{
+  width: 85%;
+  margin-top: 5px;
+   margin-left: 20px;
+}
+@media (max-width:768px) {
+  
+}
+@media (max-width:992px) {
+  
+}
+
+
+
 }

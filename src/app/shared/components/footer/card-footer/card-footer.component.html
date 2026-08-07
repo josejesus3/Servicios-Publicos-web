@@ -3,7 +3,7 @@
         <i [class]="icon"></i>
         {{label}}
     </h6>
-    <ul class="list-unstyled">
+    <ul class="list-unstyled" style="cursor: pointer;">
         @for (enlace of cardInfo; track $index) {
         <li>
             <a [routerLink]="enlace.route">

@@ -5,6 +5,8 @@ import { routes } from './app.routes';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { getSpanishPaginatorIntl } from './features/incidents/pages/incident-list/mat-paginator';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,7 +19,10 @@ export const appConfig: ApplicationConfig = {
       provide:HTTP_INTERCEPTORS,
       useClass:AuthInterceptor,
       multi:true
-    }, provideAnimationsAsync(), provideAnimationsAsync()
-    
+    }, provideAnimationsAsync(), provideAnimationsAsync(),
+    {
+    provide: MatPaginatorIntl,
+    useFactory: getSpanishPaginatorIntl
+  }
   ]
 };
