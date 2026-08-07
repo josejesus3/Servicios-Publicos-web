@@ -1,16 +1,18 @@
 import { HttpClient } from '@angular/common/http';
-import {Injectable } from '@angular/core';
+import {inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { LoginRequest } from '../models/user/loginRequest.model';
 import { Observable } from 'rxjs';
 import { RegisterRequest } from '../models/user/registerRequest.model';
 import { UserModel } from '../models/user/user.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private apiUrl = environment.ApiUrl;
+  private route=inject(Router)
   constructor(private http: HttpClient) {}
 
   login(data: LoginRequest): Observable<any> {
@@ -42,10 +44,13 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+  this.route.navigateByUrl('inicio').then(() => {
+    window.location.reload();
+  });
   }
   hasRole(role: number): boolean {
     const user = this.getUser();
-    if(role===1 ||role===4){
+    if(role===1 ||role===3){
       return user?.role_id === role;
     }
     return false;

@@ -4,6 +4,8 @@ import { environment } from '../../../../../environments/environment';
 import { CommonModule } from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import { AreaService } from '../../../../core/services/areas.service';
+import { Area } from '../../../../core/models/area/areaRequest.model';
 
 @Component({
   selector: 'app-category-chart-component',
@@ -13,21 +15,20 @@ import {MatCardModule} from '@angular/material/card';
   styleUrl: './category-chart-component.component.scss'
 })
 export class CategoryChartComponentComponent implements OnInit {
-  areas:any[]=[];
+  areas:Area[]=[];
+  areasService=inject(AreaService);
 
   
   ngOnInit(): void {
     this.getAreas();
   }
-  private apiUrl= environment.ApiUrl;
-  private http=inject(HttpClient);
+  
 
   getAreas(){
-    this.http.get<any>(`${this.apiUrl}/areas`).subscribe({
-      next:(response)=>{
-      this.areas=response.data;
-      }
+    this.areasService.getAreas().subscribe(response=>{
+      this.areas=response.data
     });
+    
 
   }
 

@@ -1,1 +1,109 @@
-<p>incident-detail works!</p>
+<div class="report-header">
+    <div class="header-content">
+
+        <div class="header-icon">
+            <i class="bi bi-clipboard2-check"></i>
+        </div>
+
+        <div>
+            <h3>Detalles del reporte</h3>
+            <p>
+                Consulta la informacion completa de tu reporte
+            </p>
+        </div>
+
+        <mat-dialog-actions align="end">
+            <button mat-icon-button style="background: #F8F8FF; color: red;" (click)="close()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-dialog-actions>
+    </div>
+
+
+</div>
+<mat-dialog-content>
+    <div class="container mb-4">
+        <div class="row det-report gx-0 mb-3">
+            <div class="col-lg-6 colum-izquierda">
+                <div class="bloque-info">
+                    <!-- Icono de Ubicación -->
+                    <i class="bi bi-geo-alt icono-naranja"></i>
+                    <!-- Bloque de Texto -->
+                    <div class="contenido-texto">
+                        <p class="titulo-reporte">Ubicación del reporte</p>
+                        <p class="descripcion-reporte">{{incident.direction}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 colum-derecha ">
+                <div class="bloque-info">
+                    <i class="bi bi-calendar icono-naranja"></i>
+                    <div class="contenido-texto">
+                        <p class="titulo-reporte"> Fecha del reporte</p>
+                        <p class="descripcion-reporte">{{incident.created_at | date:'dd MMM yyyy hh:mm a'}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h6 class="titulo"><i class="bi bi-file-earmark-medical icon-titulo"></i> Reporte Completo</h6>
+        <div class="row card-requisto gx-0 mb-3">
+            @for (data of datosReporte; track $index) {
+            <div class="border-bottom d-flex">
+                <div class="col-lg-5">
+                    <div class="datos">
+                        <i [class]="data.icono"></i>
+                        <div class="m-0 p-0">
+                            <p class="titulo-reporte">{{data.titulo}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 colum-der">
+                    <div class="datos">
+                        <p class="descripcion-reporte">{{data.valor}}</p>
+
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+        <h6 class="titulo"><i class="bi bi-file-earmark-arrow-up icon-titulo"></i> Archivos Adjuntos</h6>
+        <div class="card-archivos ">
+            <div class="row bg-body-secondary align-items-center border-bottom py-2 rounded-top">
+                <div class="col-lg-2 ps-4">
+                    <p class="titulo-reporte mb-0">Tipo</p>
+                </div>
+                <div class="col-lg-4">
+                    <p class="titulo-reporte mb-0">Nombre de Archivo</p>
+                </div>
+                <div class="col-lg-3">
+                    <p class="titulo-reporte mb-0">Fecha de carga</p>
+                </div>
+                <div class="col-lg-3 d-flex justify-content-end pe-5">
+                    <p class="titulo-reporte mb-0">Vista previa</p>
+                </div>
+            </div>
+
+            @for (img of incident.media; track $index) {
+            <div class="row align-items-center text-center py-3  border-bottom">
+
+                <div class="col-2 text-start ps-4">
+                    <!-- Icono de imagen en naranja -->
+                    <i class="bi bi-image fs-3 text-warning" style="color: #fd7e14 !important;"></i>
+                </div>
+                <div class="col-4 text-start text-dark fw-medium">imagen_1.jpg</div>
+                <div class="col-3 text-secondary" style="font-size: 0.9rem;">17/07/2025 - 10:45 a.m.</div>
+                <div class="col-3 d-flex justify-content-center">
+                    <button class=" border-0 bg-transparent" (click)="fullDialog(urlImage+img.file_path)">
+                        <img [src]="urlImage+img.file_path" class="rounded-3 object-fit-cover shadow-sm"
+                            alt="Vista previa" style="width: 120px; height: 65px;">
+                    </button>
+
+                </div>
+
+            </div>
+            }
+
+        </div>
+
+    </div>
+</mat-dialog-content>

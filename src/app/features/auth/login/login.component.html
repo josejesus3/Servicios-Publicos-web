@@ -21,32 +21,55 @@
                             Accede a tu cuenta para continuar.
                         </p>
 
-                        <form>
+                        <form [formGroup]="form" (ngSubmit)="login()">
 
-                            <div>
-                                <label class="form-label">
+                            <mat-form-field appearance="outline" class="matField">
+                                <mat-label class="form-title">
                                     Correo Electrónico
-                                </label>
+                                </mat-label>
 
-                                <input type="email" name="email" class="form-control" [(ngModel)]="email" placeholder="Escribe un correo electrónico...">
-                            </div>
+                                <input matInput type="email" name="email" formControlName="email"
+                                    placeholder="Escribe un correo electronico...">
+                                @if(form.get('email')?.invalid && form.get('email')?.touched){
+                                <mat-error>
+                                    @if (form.get('email')?.hasError('required')) {
+                                    Este campo esta incompleto
+                                    }
+                                    @if (form.get('email')?.hasError('email')) {
+                                    El campo correo es invalido
 
-                            <div>
-                                <label class="form-label">
+                                    }
+                                </mat-error>
+                                }
+                            </mat-form-field>
+
+
+                            <mat-form-field appearance="outline" class="matField mt-2">
+                                <mat-label class="form-title">
                                     Contraseña
-                                </label>
+                                </mat-label>
 
-                                <div class="password-box">
-                                    <input type="password" name="password" class="form-control" [(ngModel)]="password" placeholder="Escribe una contraseña">
+                                <input matInput [type]="hidePassword ? 'text' :'password'" name="password" formControlName="password"
+                                    placeholder="Escribe una contraseña">
 
-                                    <i class="bi bi-eye"></i>
-                                </div>
-                            </div>
+                                <button mat-icon-button matIconSuffix (click)="hidePassword = !hidePassword" type="button" class="border-0 bg-transparent">
+                                    <i [class]="hidePassword ? 'bi bi-eye me-2 fs-5' : 'bi bi-eye-slash me-2 fs-5'"></i>
+                                </button>
+
+                                @if (form.get('password')?.invalid && form.get('password')?.touched) {
+                                <mat-error>
+                                    @if (form.get('password')?.hasError('required')) {
+                                    Este campo esta incompleto
+                                    }
+                                </mat-error>
+                                }
+
+                            </mat-form-field>
 
                             <div class="d-flex flex-column options">
 
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input">
+                                    <input  type="checkbox" class="form-check-input">
 
                                     <label class="form-check-label">
                                         Recordarme
@@ -59,7 +82,7 @@
 
                             </div>
 
-                            <button type="submit" class="btn btn-login w-100" (click)="login()">
+                            <button type="submit" class="btn btn-login w-100">
                                 <i class="bi bi-send"></i>
                                 Iniciar sesión
                             </button>

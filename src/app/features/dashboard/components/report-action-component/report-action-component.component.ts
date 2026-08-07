@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { IncidentCreateComponent } from '../../../incidents/pages/incident-create/incident-create.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-report-action-component',
@@ -8,5 +11,27 @@ import { Component } from '@angular/core';
   styleUrl: './report-action-component.component.scss'
 })
 export class ReportActionComponentComponent {
+  readonly dialog = inject(MatDialog);
+  private route = inject(Router);
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(IncidentCreateComponent, {
+      width: '100%',
+      maxWidth: '800px',
+      height: '700px',
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.route.navigate(['misReportes']);
+      }
+    })
+
+
+
+
+
+  }
 
 }

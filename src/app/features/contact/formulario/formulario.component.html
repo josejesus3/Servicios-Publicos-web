@@ -1,0 +1,48 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="form-subtitle text-secondary opacity-75 fs-5 ">
+        <p class="m-0">Completa el formulario y te responderemos lo antes posible</p>
+      </div>
+      @for (item of contactFields; track item.name) {
+
+      <div class="col-md-6 p-0">
+        <label class="form-title" name="item.name">{{item.label}} <i matIconSuffix [class]="item.icon "></i></label>
+        <mat-form-field appearance="outline" class="matField">
+          <input matInput *ngIf="item.type !== 'textarea'" [type]="item.type" [name]="item.name"
+            [formControlName]="item.name" [placeholder]="item.placeholder">
+
+          <textarea matInput *ngIf="item.type === 'textarea'" rows="5" [formControlName]="item.name"> </textarea>
+          <mat-hint align="end" *ngIf="item.type==='textarea'">
+            {{form.get(item.name)?.value?.length ||0}}/300
+          </mat-hint>
+
+
+          @if (form.get(item.name)?.invalid && form.get(item.name)?.touched) {
+          <mat-error>
+            @if (this.form.get(item.name)?.hasError('required')) {
+            Este campo es obligatorio.
+            }@if (this.form.get(item.name)?.hasError('email')) {
+            El correo ingresado no es válido.
+            }
+            @if (this.form.get(item.name)?.hasError('maxlength') &&this.form.get(item.name)?.errors) {
+            Has alcanzado el límite máximo de 300 caracteres.
+            }
+          </mat-error>
+
+          }
+
+        </mat-form-field>
+
+      </div>
+      }
+      <button class="btn form-button" type="submit"><i class="bi bi-send me-2"></i>Enviar mensaje</button>
+      <div class="form-subtitle text-secondary opacity-50  m-3">
+        <p class="m-0 ">Nos comprometemos a responder en un plazo de 24 horas</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</form>

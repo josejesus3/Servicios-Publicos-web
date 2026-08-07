@@ -1,0 +1,21 @@
+<div class="footer-links">
+    <h6>
+        <i [class]="icon"></i>
+        {{label}}
+    </h6>
+    <ul class="list-unstyled" style="cursor: pointer;">
+        @for (enlace of cardInfo; track $index) {
+        <li>
+            <a [routerLink]="enlace.route">
+                <i [class]="enlace.icon"></i>
+                <div>
+                    <span>{{ enlace.label }}</span>
+                    <small>{{enlace.subtitle}}</small>
+                </div>
+
+            </a>
+
+        </li>
+        }
+    </ul>
+</div>

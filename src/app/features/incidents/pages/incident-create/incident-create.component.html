@@ -1,1 +1,161 @@
-<p>incident-create works!</p>
+<div class="report-header">
+  <div class="header-content">
+
+    <div class="header-icon">
+      <i class="bi bi-clipboard2-check"></i>
+    </div>
+
+    <div>
+      <h3>{{ id != 0 ? 'Editar Reporte' : 'Nuevo Reporte' }}</h3>
+      <p>
+        Ayúdanos a mejorar tu comunidad. Completa el formulario para reportar
+        una situación.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="header-wave"></div>
+</div>
+
+<mat-dialog-content>
+  <div>
+    <!-- IZQUIERDA -->
+    <form class="list-group " [formGroup]="form">
+
+      <label><i class="bi bi-card-text" style="color: #F97316;"></i> Título *</label>
+
+      <mat-form-field class="matField" appearance="outline">
+        <input matInput type="text" formControlName="title" placeholder="Escribe un título breve y descriptivo">
+        @if (form.get('title')?.invalid&&form.get('title')?.touched) {
+        <mat-error>
+          @if (form.get('title')?.hasError('required')) {
+          Este Campo es requerido
+          }
+        </mat-error>
+        }
+      </mat-form-field>
+
+      <label><i class="bi bi-chat-left-text" style="color: #F97316;"></i> Descripción *</label>
+
+      <mat-form-field appearance="outline" class="matField">
+        <textarea matInput rows="8" class="custom-input" formControlName="description"
+          placeholder="Describe el problema con el mayor detalle posible">
+      </textarea>
+
+        <mat-hint align="end">
+          {{form.get('description')?.value?.length ||0}}/200
+        </mat-hint>
+        @if (form.get('description')?.invalid&&form.get('description')?.touched ) {
+        <mat-error>
+          @if (form.get('description')?.hasError('required')) {
+          Este Campo es requerido
+          }
+          @if (form.get('description')?.hasError('maxlength')&& form.get('description')?.errors) {
+          Has alcanzado el límite máximo de 200 caracteres.
+          }
+        </mat-error>
+        }
+      </mat-form-field>
+
+      <label><i class="bi bi-geo-alt" style="color: #F97316;"></i> Dirección *</label>
+
+      <mat-form-field appearance="outline" class="matField">
+        <input matInput type="text" formControlName="direction" placeholder="Ingresa la dirección exacta">
+        @if (form.get('direction')?.invalid&&form.get('direction')?.touched) {
+        <mat-error>
+          @if(form.get('direction')?.hasError('required')){
+          Este Campo es requerido
+
+          }
+        </mat-error>
+        }
+      </mat-form-field>
+
+
+
+
+      <button class="location-btn">
+        📍 Usar mi ubicación
+      </button>
+
+    </form>
+
+    <!-- DERECHA -->
+    <div class="">
+
+      <label><i class="bi bi-grid" style="color: #F97316;"></i> Categoría *</label>
+
+      <div class="category-grid" [formGroup]="form">
+
+        @for(item of areas; track item.name){
+
+        <button type="button" class="category-card" [class.active]="selectedCategory === item.id"
+          (click)="selectCate(item.id)">
+
+          <span [class]="getIconos(item.name)">
+          </span>
+
+          <span>
+            {{item.name}}
+          </span>
+
+        </button>
+
+
+
+        }
+        
+
+      </div>
+      @if (form.get('area_id')?.invalid&&form.get('area_id')?.touched) {
+      <div class="text-danger small p-0 m-0">
+        @if (form.get('area_id')?.hasError('required')) {
+        Este Campo es requerido
+        }
+      </div>
+      }
+
+
+      <div class="upload-container">
+
+        <h5>Agregar fotos (opcional)</h5>
+
+        <div class="dropzone">
+
+          <mat-icon>cloud_upload</mat-icon>
+
+          <p>Arrastra y suelta tus imágenes aquí</p>
+
+          <small>o haz clic para seleccionar</small>
+          <label for="fileUpload" class="upload-btn">
+            Elegir archivos
+          </label>
+
+          <input id="fileUpload" type="file" multiple (change)="onFileSelected($event)" accept="image/*,video/*">
+
+          <span>
+            {{ selectfileMedia.length ? selectfileMedia.length + ' archivos seleccionados' : 'Sin archivos seleccionados' }}
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="bg-white">
+
+  <button mat-button style="background: #F8F8FF;color: #898989;" (click)="close()">
+    Cancelar
+  </button>
+
+  <button mat-raised-button style="background: #f77417; color: white;" (click)="submit()">
+    <i class="bi bi-send me-2"></i> Enviar reporte
+  </button>
+
+
+</mat-dialog-actions>

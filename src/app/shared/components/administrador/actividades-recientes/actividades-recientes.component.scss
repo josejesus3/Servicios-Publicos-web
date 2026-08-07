@@ -1,0 +1,316 @@
+$card: #ffffff;
+
+$text: #1e293b;
+$text-light: #64748b;
+$border: #edf2f7;
+
+$shadow-sm: 0 2px 6px rgba(15, 23, 42, .03);
+$shadow-md: 0 10px 30px rgba(15, 23, 42, .06);
+$shadow-lg: 0 18px 40px rgba(15, 23, 42, .10);
+
+$orange: #ff7a00;
+$orange-bg: #fff4ea;
+
+$blue: #3b82f6;
+$blue-bg: #eef5ff;
+
+$green: #22c55e;
+$green-bg: #ecfaf2;
+
+$purple: #a855f7;
+$purple-bg: #f6efff;
+
+
+
+.dashboard {
+
+min-height: 100vh;
+
+}
+
+
+
+.dashboard-card,
+.stat-card {
+    background: $card;
+    border: none !important;
+    border-radius: 22px !important;
+    box-shadow:
+        $shadow-sm,
+        $shadow-md;
+    transition: .30s ease;
+    overflow: hidden;
+}
+.dashboard-card:hover,
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 8px 20px rgba(15,23,42,.06),
+        0 20px 45px rgba(15,23,42,.10);
+}
+
+
+.timeline {
+
+    position:relative;
+
+    padding:10px 20px 20px;
+
+}
+
+
+.timeline-item {
+
+    display:flex;
+
+    gap:18px;
+
+    position:relative;
+
+    padding:18px 0;
+
+}
+
+
+.timeline-item:not(:last-child)::after {
+
+    content:"";
+
+    position:absolute;
+
+    left:20px;
+
+    top:58px;
+
+    width:2px;
+
+    height:calc(100% - 18px);
+
+    background:#e8edf5;
+
+}
+
+
+.timeline-icon {
+
+    width:42px;
+
+    height:42px;
+
+    min-width:42px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:2;
+
+}
+
+
+.timeline-icon mat-icon {
+
+    font-size:22px;
+
+    width:22px;
+
+    height:22px;
+
+}
+
+
+/* Colores timeline */
+
+
+.timeline-icon.orange {
+
+    background:#fff3e8;
+
+    color:#ff7a00;
+
+}
+
+
+.timeline-icon.blue {
+
+    background:#edf5ff;
+
+    color:#3b82f6;
+
+}
+
+
+.timeline-icon.green {
+
+    background:#eafaf1;
+
+    color:#22c55e;
+
+}
+
+
+.timeline-icon.purple {
+
+    background:#f5edff;
+
+    color:#a855f7;
+
+}
+
+
+
+.timeline h6 {
+
+    margin:0;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    color:#1e293b;
+
+}
+
+
+.timeline small {
+
+    display:block;
+
+    margin-top:4px;
+
+    line-height:1.5;
+
+}
+.mat-mdc-card {
+
+    --mdc-elevated-card-container-color:#ffffff;
+
+    background:#ffffff !important;
+
+}
+
+
+.mat-mdc-card-content {
+
+    padding:24px !important;
+
+}
+
+
+.mat-mdc-card-header {
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+
+.mat-mdc-menu-panel {
+
+    border-radius:15px !important;
+
+    box-shadow:
+
+        0 15px 40px rgba(15,23,42,.15)!important;
+
+}
+
+
+/*==================================================
+=            ANIMACIONES
+==================================================*/
+
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity:0;
+
+        transform:translateY(15px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+.dashboard-card,
+.stat-card {
+
+    animation:fadeUp .45s ease forwards;
+
+}
+
+
+
+.stat-card:nth-child(1){
+
+    animation-delay:.05s;
+
+}
+
+
+.stat-card:nth-child(2){
+
+    animation-delay:.10s;
+
+}
+
+
+.stat-card:nth-child(3){
+
+    animation-delay:.15s;
+
+}
+
+
+.stat-card:nth-child(4){
+
+    animation-delay:.20s;
+
+}
+
+mat-card-header {
+
+    padding: 24px 24px 12px;
+
+}
+
+mat-card-title {
+
+    font-size: 26px !important;
+
+    font-weight: 700 !important;
+
+    color: $text;
+
+}
+
+mat-card-subtitle {
+
+    color: $text-light;
+
+    margin-top: 5px;
+
+}
+
+.flex-spacer {
+
+    flex: 1;
+
+}

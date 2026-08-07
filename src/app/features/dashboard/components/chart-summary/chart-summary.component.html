@@ -9,14 +9,14 @@
             </div>
             <div class="incident-container">
                 @if (incident &&incident.length>0) {
-                @for (item of incident.slice(0,5); track $index) {
+                @for (item of incident; track $index) {
                 <div class="custom-card">
                     <div class="row align-items-center g-3">
                         <!-- Icono + Información -->
                         <div class="col-lg-6 col-md-6">
                             <div class="incident-info">
                                 <div class="circle">
-                                    <i [class]="getIconos(item.area_id)"></i>
+                                    <i [class]="getIconos(item.area['name'])"></i>
                                 </div>
                                 <div class="incident-text">
                                     <h6 class="incident-title">
