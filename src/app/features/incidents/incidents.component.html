@@ -12,29 +12,33 @@
         </div>
     </div>
     <div class="buscador-report">
-        <mat-form-field appearance="outline" class="mat-buscador" >
+        <mat-form-field appearance="outline" class="mat-buscador">
             <mat-label> <i class="bi bi-search"></i> Buscador por titulo, direccion y categoria</mat-label>
-            <input matInput type="text" (input)="onBuscador($event)">
+            <input matInput type="text" [(ngModel)]="filter" (input)="onBuscador()">
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="filtro" >
+        <mat-form-field appearance="outline" class="filtro">
             <mat-label>Categoría</mat-label>
 
-            <mat-select (selectionChange)="onFiltro($event)" >
-                <mat-option value="">Todas</mat-option>
-                <mat-option *ngFor="let cat of incident" [value]="cat.area['name']">{{cat.area['name']}}</mat-option>
+            <mat-select [(ngModel)]="categoria" (ngModelChange)="getIncident()">
+                <mat-option [value]=0>Todas</mat-option>
+                <mat-option *ngFor="let cat of areas" [value]="cat.id">{{cat.name}}</mat-option>
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="filtro" >
+        <mat-form-field appearance="outline" class="filtro">
             <mat-label>Estado</mat-label>
 
-            <mat-select (selectionChange)="onFiltro($event)" >
-                <mat-option value="pendiente">pendiente</mat-option>
+            <mat-select [(ngModel)]="estado" (ngModelChange)="getIncident()">
+                <mat-option value="">Todas</mat-option>
+                <mat-option value="pendiente">Pendiente</mat-option>
                 <mat-option value="en_proceso">En proceso</mat-option>
                 <mat-option value="finalizado">Finalizado</mat-option>
             </mat-select>
         </mat-form-field>
+        <button type="button" class="refresh-button" (click)="reiniciarValores()">
+            <i class="bi bi-x-lg"></i>
+        </button>
     </div>
 
     <div class="custom-box">

@@ -1,0 +1,491 @@
+/* =========================================================
+   CARD PRINCIPAL
+========================================================= */
+
+.area-modal {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.08),
+        0 12px 35px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 28px 16px;
+    border-bottom: 1px solid #edf0f3;
+    background: #ff6a00;
+
+    h2 {
+        margin: 0 0 7px;
+        font-size: 32px;
+        font-weight: 600;
+        color: white;
+    }
+}
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #8a96a3;
+    font-size: 11px;
+    i {
+        font-size: 10px;
+    }
+}
+
+/* =========================================================
+   BOTÓN CERRAR
+========================================================= */
+
+.close-button {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #dce1e6;
+    border-radius: 6px;
+    background: white;
+    color: #6b7280;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    &:hover {
+        background: #f5f6f7;
+        color: #333;
+    }
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+.modal-body-custom {
+    padding: 32px 70px 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-section {
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.form-label-custom {
+    display: block;
+    margin-bottom: 14px;
+    color: #4a5563;
+    font-size: 18px;
+    line-height: 1.25;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.custom-input {
+    width: 100%;
+    height: 45px;
+    padding: 0 18px;
+    box-sizing: border-box;
+    border: 2px solid #dce2e8;
+    border-radius: 11px;
+    background: #ffffff;
+    color: #26313d;
+    font-size: 15px;
+    font-weight: 400;
+    outline: none;
+    box-shadow: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+
+    &::placeholder {
+        color: #a0a8b2;
+        opacity: 1;
+    }
+
+    &:focus {
+        border-color: #ff6b00;
+
+        box-shadow:
+            0 0 0 3px rgba(255, 107, 0, 0.08);
+    }
+}
+
+/* =========================================================
+   ESTADO
+========================================================= */
+
+.status-section {
+    padding: 8px 0 30px;
+
+    h3 {
+        margin: 0 0 25px;
+        color: #26313d;
+        font-size: 18px;
+        line-height: 1.3;
+        font-weight: 500;
+    }
+}
+/* =========================================================
+   CONTENIDO DEL ESTADO
+========================================================= */
+.status-section {
+    padding: 18px 5px 8px;
+
+    h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+}
+
+.status-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    strong {
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    p {
+        margin: 2px 0 0;
+        font-size: 12px;
+        color: #89929c;
+    }
+}
+/* =========================================================
+   SWITCH
+========================================================= */
+
+.switch {
+    position: relative;
+    width: 42px;
+    height: 22px;
+    display: inline-block;
+
+    input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+}
+
+
+/* =========================================================
+   SLIDER
+========================================================= */
+
+.slider {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+
+    background-color: #cdd3d8;
+    border-radius: 20px;
+
+    transition: .2s;
+
+    &::before {
+        content: "";
+        position: absolute;
+
+        width: 16px;
+        height: 16px;
+
+        left: 3px;
+        top: 3px;
+
+        background: white;
+        border-radius: 50%;
+
+        transition: .2s;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+    }
+}
+
+.switch input:checked + .slider {
+    background-color: #20bf7a;
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(20px);
+}
+
+
+/* =========================================================
+   SWITCH ACTIVO
+========================================================= */
+
+.switch input:checked+.slider {
+    background-color: #20bf7a;
+}
+
+.switch input:checked+.slider::before {
+    transform: translateX(18px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.modal-footer-custom {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 30px;
+
+    padding: 30px 70px 38px;
+
+    border-top: 1px solid #f0f1f3;
+
+    background: #ffffff;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   BOTÓN CANCELAR
+========================================================= */
+
+.btn-cancel {
+    min-width: 100px;
+    height: 40px;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ff625b;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #ef5c55;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 700;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+
+    &:hover {
+        background: #fff6f5;
+        border-color: #ed5a53;
+    }
+}
+
+
+/* =========================================================
+   BOTÓN GUARDAR
+========================================================= */
+
+.btn-save {
+    min-width: 90px;
+    height: 43px;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: none;
+    border-radius: 9px;
+    background: #ff6900;
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 700;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    &:hover:not(:disabled) {
+        background: #ec6100;
+        transform: translateY(-1px);
+        box-shadow:
+            0 5px 14px rgba(255, 107, 0, 0.25);
+    }
+
+    &:disabled {
+        background: #ffb37c;
+
+        color: #ffffff;
+
+        cursor: not-allowed;
+
+        box-shadow: none;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .area-modal {
+        border-radius: 14px;
+    }
+
+
+    /* HEADER */
+
+    .modal-header-custom {
+        padding: 25px;
+
+        h2 {
+            font-size: 28px;
+        }
+    }
+
+
+    /* CERRAR */
+
+    .btn-close-custom {
+        width: 48px;
+        height: 48px;
+
+        border-radius: 12px;
+
+        mat-icon {
+            width: 27px;
+            height: 27px;
+
+            font-size: 27px;
+        }
+    }
+
+
+    /* BODY */
+
+    .modal-body-custom {
+        padding: 25px 25px 0;
+    }
+
+
+    /* LABEL */
+
+    .form-label-custom {
+        font-size: 20px;
+    }
+
+
+    /* INPUT */
+
+    .custom-input {
+        height: 55px;
+
+        font-size: 17px;
+    }
+
+
+    /* TEXTAREA */
+
+    .custom-textarea {
+        height: 250px;
+
+        min-height: 200px;
+
+        font-size: 17px;
+    }
+
+
+    /* CONTADOR */
+
+    .character-counter {
+        font-size: 15px;
+    }
+
+
+    /* ESTADO */
+
+    .status-section {
+        padding-bottom: 25px;
+
+        h3 {
+            font-size: 19px;
+        }
+    }
+
+    .status-content {
+        align-items: flex-start;
+
+        strong {
+            font-size: 17px;
+        }
+
+        p {
+            font-size: 15px;
+        }
+    }
+
+
+    /* SWITCH */
+
+    .switch {
+        width: 60px;
+        height: 32px;
+    }
+
+    .slider::before {
+        width: 24px;
+        height: 24px;
+
+        left: 4px;
+        top: 4px;
+    }
+
+    .switch input:checked+.slider::before {
+        transform: translateX(28px);
+    }
+
+
+    /* FOOTER */
+
+    .modal-footer-custom {
+        flex-direction: column-reverse;
+
+        gap: 12px;
+
+        padding: 20px 25px 25px;
+    }
+
+
+    /* BOTONES */
+
+    .btn-cancel,
+    .btn-save {
+        width: 100%;
+
+        min-width: 0;
+
+        height: 58px;
+
+        font-size: 18px;
+    }
+}

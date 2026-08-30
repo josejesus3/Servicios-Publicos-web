@@ -1,0 +1,88 @@
+<div class="area-modal">
+
+    <!-- HEADER -->
+    <div class="dialog-header">
+        <div>
+            <h2>{{id ?'Editar usuario':'Crear Area'}}</h2>
+
+        </div>
+        <button type="button" class="close-button" (click)="close()">
+            <i class="bi bi-x-lg"></i>
+        </button>
+    </div>
+
+    <!-- BODY -->
+    <form [formGroup]="form"  class="modal-body-custom">
+
+        <!-- NOMBRE -->
+        <div class="form-section">
+
+            <label for="nombre" class="form-label-custom">
+                Nombre del área
+            </label>
+
+            <input id="nombre" type="text" class="form-control custom-input" formControlName="name"
+                placeholder="El Medio Ambiente" maxlength="100" />
+        </div>
+
+
+        <!-- DESCRIPCIÓN -->
+        <div class="form-section">
+
+            <label for="alias" class="form-label-custom">
+                Alias
+            </label>
+            <input type="text" class="form-control custom-input" formControlName="slug" placeholder="Ejp. M.A">
+        </div>
+
+
+        <!-- ESTADO -->
+        <div class="status-section">
+            <h3>Estado</h3>
+            <div class="status-content">
+                <label class="switch">
+                    <input type="checkbox" formControlName="estado">
+                    <span class="slider"></span>
+                </label>
+                <div>
+                    <strong>
+                        Área activa
+                    </strong>
+
+                    <p>
+                        El área estará disponible para asignación
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+
+    <!-- FOOTER -->
+    <div class="modal-footer-custom">
+
+        <button type="button" class="btn btn-cancel" (click)="close()">
+
+            Cancelar
+
+        </button>
+
+        @if (id) {
+        <button type="button" class="btn btn-save" (click)="editarArea()">
+
+            <i class="bi bi-pencil-fill"></i>
+            <span>Editar area</span>
+        </button>
+        }@else {
+        <button type="button" class="btn btn-save" (click)="guardarArea()">
+
+            <i class="bi bi-floppy-fill"></i>
+            <span>Guardar area</span>
+        </button>
+
+        }
+
+    </div>
+
+</div>

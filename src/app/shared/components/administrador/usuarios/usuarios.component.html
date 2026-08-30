@@ -1,320 +1,141 @@
-
-            <mat-card class="dashboard-card   h-100">
-
-                <mat-card-header>
-
-                    <mat-card-title>
-
-                        Usuarios Recientes
-
-                    </mat-card-title>
-
-                    <span class="flex-spacer"></span>
-
-                    <button mat-button color="primary">
-
-                        Ver todos
-
-                    </button>
-
-                </mat-card-header>
-
-                <mat-card-content>
-
-                    <div class="table-responsive">
-
-                        <table class="table table-hover align-middle">
-
-                            <thead>
-
-                                <tr>
-
-                                    <th>Usuario</th>
-
-                                    <th>Correo</th>
-
-                                    <th>Rol</th>
-
-                                    <th>Área</th>
-
-                                    <th>Estado</th>
-
-                                    <th></th>
-
-                                </tr>
-
-                            </thead>
-
-                            <tbody>
-
-                                <tr>
-
-                                    <td>
-
-                                        <div class="d-flex align-items-center">
-
-                                            <div class="avatar">
-
-                                                JP
-
-                                            </div>
-
-                                            <div class="ms-2">
-
-                                                Juan Pérez
-
-                                            </div>
-
-                                        </div>
-
-                                    </td>
-
-                                    <td>juanemail.com</td>
-
-                                    <td>
-
-                                        <span class="badge badge-orange">
-
-                                            Ventanilla
-
-                                        </span>
-
-                                    </td>
-
-                                    <td>
-
-                                        Obras Públicas
-
-                                    </td>
-
-                                    <td>
-
-                                        <span class="badge bg-success">
-
-                                            Activo
-
-                                        </span>
-
-                                    </td>
-
-                                    <td>
-
-                                        <button mat-icon-button>
-
-                                            <mat-icon>
-
-                                                more_vert
-
-                                            </mat-icon>
-
-                                        </button>
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td>
-
-                                        <div class="d-flex align-items-center">
-
-                                            <div class="avatar">
-
-                                                MG
-
-                                            </div>
-
-                                            <div class="ms-2">
-
-                                                María García
-
-                                            </div>
-
-                                        </div>
-
-                                    </td>
-
-                                    <td>mariaemail.com</td>
-
-                                    <td>
-
-                                        <span class="badge bg-primary">
-
-                                            Director
-
-                                        </span>
-
-                                    </td>
-
-                                    <td>
-
-                                        Servicios Municipales
-
-                                    </td>
-
-                                    <td>
-
-                                        <span class="badge bg-success">
-
-                                            Activo
-
-                                        </span>
-
-                                    </td>
-
-                                    <td>
-
-                                        <button mat-icon-button>
-
-                                            <mat-icon>
-
-                                                more_vert
-
-                                            </mat-icon>
-
-                                        </button>
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td>
-
-                                        <div class="d-flex align-items-center">
-
-                                            <div class="avatar">
-
-                                                AC
-
-                                            </div>
-
-                                            <div class="ms-2">
-
-                                                Ana Castillo
-
-                                            </div>
-
-                                        </div>
-
-                                    </td>
-
-                                    <td>anaemail.com</td>
-
-                                    <td>
-
-                                        <span class="badge bg-success">
-
-                                            Ciudadano
-
-                                        </span>
-
-                                    </td>
-
-                                    <td>N/A</td>
-
-                                    <td>
-
-                                        <span class="badge bg-success">
-
-                                            Activo
-
-                                        </span>
-
-                                    </td>
-
-                                    <td>
-
-                                        <button mat-icon-button>
-
-                                            <mat-icon>
-
-                                                more_vert
-
-                                            </mat-icon>
-
-                                        </button>
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td>
-
-                                        <div class="d-flex align-items-center">
-
-                                            <div class="avatar">
-
-                                                RL
-
-                                            </div>
-
-                                            <div class="ms-2">
-
-                                                Roberto López
-
-                                            </div>
-
-                                        </div>
-
-                                    </td>
-
-                                    <td>robertoemail.com</td>
-
-                                    <td>
-
-                                        <span class="badge badge-orange">
-
-                                            Ventanilla
-
-                                        </span>
-
-                                    </td>
-
-                                    <td>
-
-                                        Desarrollo Urbano
-
-                                    </td>
-
-                                    <td>
-
-                                        <span class="badge bg-danger">
-
-                                            Inactivo
-
-                                        </span>
-
-                                    </td>
-
-                                    <td>
-
-                                        <button mat-icon-button>
-
-                                            <mat-icon>
-
-                                                more_vert
-
-                                            </mat-icon>
-
-                                        </button>
-
-                                    </td>
-
-                                </tr>
-
-                            </tbody>
-
-                        </table>
-
-                    </div>
-
-                </mat-card-content>
-
-            </mat-card>
-
-    
+<mat-card class="dashboard-card ">
+
+    <mat-card-header class="header">
+
+        <mat-card-title class="titulo">
+            Usuarios Recientes
+        </mat-card-title>
+        <button class="btn report-button" (click)="openUsuario()">
+            <i class="bi bi-plus-circle-fill me-2"></i>
+            Nuevo Usuario
+        </button>
+
+
+    </mat-card-header>
+    <div class="buscador">
+        <mat-form-field appearance="outline" class="mat-buscador">
+            <mat-label>Buscar por nombre/correo electronico</mat-label>
+            <input matInput [(ngModel)]="filter" (keyup.enter)="filtro(filter)">
+
+        </mat-form-field>
+
+        <button class="btn btn-secondary boton-usuario" (click)="filtro(filter)">
+            Buscar Usuario
+        </button>
+
+    </div>
+
+
+    <mat-card-content>
+
+
+        <div class="table-responsive">
+
+            <table class="table  align-middle">
+                <thead>
+
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
+                        <th>Área</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                @if (loanding) {
+                <tr>
+                    <td colspan="6">
+                        <div class=" d-flex flex-column justify-content-center align-items-center gap-2 py-5">
+                            <div class="spinner-border text-info" role="status">
+                            </div>
+                            <span class=" text-black">
+                                Cargando...
+                            </span>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                </tr>
+
+                }@else if(searchDone && users.length===0){
+                <tr>
+                    <td colspan="6">
+                        <div class="d-flex flex-column justify-content-center align-items-center py-5 text-muted">
+
+                            <i class="bi bi-person-x fs-1 mb-3 text-secondary"></i>
+
+                            <h5 class="mb-1 fw-semibold">
+                                No encontramos usuarios
+                            </h5>
+
+                            <span class="small">
+                                No hay resultados que coincidan con tu búsqueda.
+                            </span>
+
+                        </div>
+                    </td>
+                </tr>
+
+                }@else {
+                @for (item of users; track $index) {
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+
+                                <div class="ms-2">
+                                    {{item.name}}
+
+                                </div>
+                            </div>
+                        </td>
+                        <td>{{item.email}}</td>
+
+                        <td>
+                            <span class="badge badge-orange">
+
+                                {{item.role.name|| 'sin rol'}}
+                            </span>
+                        </td>
+                        <td>
+                            @if (item.area_id === null || item.area?.name === null && item.role_id != 3) {
+                            <span class="badge bg-secondary">
+                                Sin Area
+                            </span>
+                            } @else {
+                            <span>{{ item.area?.name }}</span>
+                            }
+                        </td>
+                        <td>
+                            @if(item.estado){
+                            <span class="badge bg-success">
+                                Activo
+                            </span>
+                            }@else {
+                            <span class="badge bg-secondary">
+                                Inactivo
+                            </span>
+                            }
+                        </td>
+                        <td>
+                            <button class="btn btn-sm border-0  m-0 p-0 " (click)="openUsuario(item)"
+                                matTooltip="Editar Usuario" matRipple [matRippleCentered]="true"
+                                [matRippleUnbounded]="true" [matRippleRadius]="25">
+                                <i class="bi bi-pencil fs-3 text-info"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                }
+                }
+            </table>
+        </div>
+    </mat-card-content>
+    @if (pageCurret) {
+    <mat-paginator class="custom-paginator" [length]="pageCurret.total" [pageSize]="pageCurret.per_page"
+        aria-label="Select page" (page)="changePage($event)">
+    </mat-paginator>
+    }
+</mat-card>

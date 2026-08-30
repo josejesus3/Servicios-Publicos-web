@@ -25,20 +25,21 @@
     border: 1px solid rgba(0, 0, 0, .15);
     margin-bottom: 10px;
 }
-.mat-buscador{
+
+.mat-buscador {
     width: 30%;
     height: 75%;
     --mdc-outlined-text-field-container-shape: 8px;
-     --mat-form-field-container-height: 50px;
+    --mat-form-field-container-height: 50px;
     --mat-form-field-container-vertical-padding: 10px;
 }
 
-.filtro{
+.filtro {
     margin-left: 20px;
     width: 150px;
     height: 75%;
     --mdc-outlined-text-field-container-shape: 8px;
-     --mat-form-field-container-height: 50px;
+    --mat-form-field-container-height: 50px;
     --mat-form-field-container-vertical-padding: 10px;
 }
 
@@ -53,6 +54,29 @@
     border-top-right-radius: 16px;
     border-bottom: 1px solid #f5f5f5;
     background: #fafafa;
+}
+
+.refresh-button {
+    width: 28px;
+    height: 28px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #dce1e6;
+    border-radius: 6px;
+    background: white;
+    color: #6b7280;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    &:hover {
+        background: #f5f6f7;
+        color: #333;
+    }
+
 }
 
 .box-header h5 {
@@ -99,4 +123,68 @@
 .report-button:focus {
     outline: none !important;
     box-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+    .report-button {
+        position: static;
+        width: 200px;
+        margin-top: 15px;
+    }
+
+    .row>.col-lg-2 {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        padding: 0 15px;
+        margin-bottom: 15px;
+    }
+
+    .buscador-report {
+        flex-wrap: wrap;
+        gap: 10px;
+        height: auto;
+        padding: 10px;
+        justify-content: space-between;
+    }
+
+    .mat-buscador {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .filtro {
+        width: calc(50% - 5px);
+        margin-left: 0;
+    }
+
+    .box-header {
+        padding: 0 20px;
+        height: auto;
+        min-height: 45px;
+    }
+
+    .box-header h5 {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 545px) {
+    .mat-buscador {
+        height: 50px;
+    }
+
+    .filtro {
+        width: 150px;
+        height: 50px;
+        display: flex;
+    }
+
+    .box-header {
+        justify-content: center;
+    }
+
+    .box-header h5:nth-child(n+2) {
+        display: none;
+    }
 }

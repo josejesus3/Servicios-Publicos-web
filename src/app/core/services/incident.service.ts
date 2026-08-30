@@ -16,19 +16,18 @@ export class IncidentService {
         return this.http.get<any>(`${this.apiUrl}/getIncident`);
     }
 
-    getIncident(page: number, perPage: number): Observable<any> {
-        return this.http.get<any>(`${this.apiUrl}/incident?page=${page}&per_page=${perPage}`);
+    getIncident(page: number, perPage: number, filter: string = '', categoria: number, estado: string): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/incident?page=${page}&per_page=${perPage}&filter=${filter}&categoria=${categoria}&estado=${estado}`);
     }
 
-    postIncident(incident:FormData):Observable<any>{
-     return this.http.post(`${this.apiUrl}/incident`,incident);
+    postIncident(incident: FormData): Observable<any> {
+        return this.http.post(`${this.apiUrl}/incident`, incident);
 
     }
-    putIncident(id:number,incident:FormData):Observable<any>{
-     return this.http.put(`${this.apiUrl}/incident/${id}`,incident);
+    putIncident(id: number, incident: FormData): Observable<any> {
+        return this.http.put(`${this.apiUrl}/incident/${id}`, incident);
     }
-    destroyIncident(id:number):Observable<any>{
-        console.log("servicio id:",id)
+    destroyIncident(id: number): Observable<any> {
         return this.http.delete(`${this.apiUrl}/incident/${id}`);
     }
 }

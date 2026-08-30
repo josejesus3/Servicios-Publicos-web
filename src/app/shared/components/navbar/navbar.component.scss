@@ -7,7 +7,7 @@
     min-height: 85px;
     border-bottom: 1px solid #f2f2f2;
     box-shadow:
-        0 2px 12px rgba(0,0,0,.04);
+        0 2px 12px rgba(0, 0, 0, .04);
 }
 
 /* ================================= */
@@ -200,7 +200,7 @@
     transform: translateY(-2px);
 
     box-shadow:
-        0 10px 20px rgba(255,106,0,.25);
+        0 10px 20px rgba(255, 106, 0, .25);
 }
 
 /* ================================= */
@@ -227,9 +227,11 @@
 
     padding: 0;
 }
-.custom-kebab{
-    display:none;
+
+.custom-kebab {
+    display: none;
 }
+
 .custom-kebab:focus {
 
     box-shadow: none;
@@ -259,8 +261,7 @@
     border-radius: 2px;
 
     transform:
-        translateY(8px)
-        rotate(45deg);
+        translateY(8px) rotate(45deg);
 }
 
 .custom-kebab.active .toggler-dot:nth-child(2) {
@@ -277,121 +278,238 @@
     border-radius: 2px;
 
     transform:
-        translateY(-8px)
-        rotate(-45deg);
+        translateY(-8px) rotate(-45deg);
+}
+
+
+.menu-sesion-container {
+    position: relative;
+    display: inline-block;
+    list-style: none;
+}
+
+.sesion {
+    background-color: #f15a24;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    cursor: pointer;
+    border: 2px solid #333;
+    transition: transform 0.2s ease;
+}
+
+.sesion:hover {
+    transform: scale(1.05);
+}
+
+.cuadro-data {
+    position: absolute;
+    top: calc(100% + 15px);
+    right: 0;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    min-width: 230px;
+    z-index: 1000;
+}
+
+.cuadro-data::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: 12px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #f15a24;
+}
+
+.user-info {
+    padding: 16px 20px;
+}
+
+.user-info h5 {
+    margin: 0 0 4px 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.user-info p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.logout-section {
+    border-top: 1px solid #ebebeb;
+    padding: 8px;
+}
+
+.btn-cerrar {
+    width: 100%;
+    background: transparent;
+    border: none;
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #444;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    /* Espacio entre el icono y el texto */
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.btn-cerrar:hover {
+    background-color: #f8f9fa;
+    color: #d9534f;
+}
+
+.btn-cerrar i {
+    font-size: 1.2rem;
 }
 
 /* ================================= */
 /* DESKTOP */
 /* ================================= */
 
-@media (min-width:1500px){
-    .container{
+@media (min-width:1500px) {
+    .container {
         max-width: 1740px;
     }
 }
-@media (min-width:992px){
 
-    .custom-menu-collapse{
+@media (min-width:992px) {
 
-        display:flex !important;
-
-        flex-grow:1;
-
-        justify-content:flex-end;
-
-        align-items:center;
+    .custom-menu-collapse {
+        display: flex !important;
+        flex-grow: 1;
+        justify-content: flex-end;
+        align-items: center;
     }
+
 }
 
 /* ================================= */
 /* MOBILE */
 /* ================================= */
 
-@media (max-width:991px){
+@media (max-width:991px) {
 
-    .custom-menu-collapse{
-
-        max-height:0;
-
-        opacity:0;
-
-        overflow:hidden;
-
-        width:100%;
-
-        transition:all .35s ease;
+    .custom-menu-collapse {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        width: 100%;
+        transition: all .35s ease;
     }
 
-    .custom-menu-collapse.show{
-
-        max-height:500px;
-
-        opacity:1;
-
-        margin-top:15px;
-
-        padding:15px;
-
-        border-radius:16px;
-
-        background:white;
-
+    .custom-menu-collapse.show {
+        max-height: 500px;
+        opacity: 1;
+        margin-top: 15px;
+        padding: 15px;
+        border-radius: 16px;
+        background: white;
         box-shadow:
-            0 10px 25px rgba(0,0,0,.08);
+            0 10px 25px rgba(0, 0, 0, .08);
     }
 
-    .navbar-nav{
-
-        gap:15px;
-
-        align-items:center;
+    .navbar-nav {
+        gap: 15px;
+        align-items: center;
     }
 
-    .nav-link{
-
-        font-size:18px;
+    .nav-link {
+        font-size: 18px;
     }
 
-    .btn-login{
-
-        width:100%;
-
-        max-width:280px;
+    .btn-login {
+        width: 100%;
+        max-width: 280px;
     }
-    .custom-kebab{
-        display:flex;
-    } 
+
+    .custom-kebab {
+        display: flex;
+    }
+
+    .cuadro-data {
+
+        top: -110px;
+        left: calc(100% + 15px);
+        right: auto;
+    }
+
+    .cuadro-data::before {
+        display: block;
+        width: 0;
+        height: 0;
+        top: 120px;
+        left: -10px;
+        right: auto;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid #f15a24;
+        border-left: none;
+    }
 }
 
 /* ================================= */
 /* MOBILE PEQUEÑO */
 /* ================================= */
 
-@media (max-width:576px){
+@media (max-width:576px) {
+    .cuadro-data {
+        top: auto;
+        bottom: calc(100% + 15px);
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+    }
 
-    .brand-wrapper{
+    .cuadro-data::before {
+        top: auto;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        border-bottom: none;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #f15a24;
+    }
+
+    .brand-wrapper {
         gap: 10px;
     }
 
-    .custom-img{
+    .custom-img {
 
         width: 60px;
 
         height: 60px;
     }
 
-    .custom-box .dependencia{
+    .custom-box .dependencia {
 
         font-size: 11px;
     }
 
-    .custom-box .title{
+    .custom-box .title {
 
         font-size: 24px;
     }
 
-    .custom-box .secText{
+    .custom-box .secText {
 
         font-size: 11px;
     }

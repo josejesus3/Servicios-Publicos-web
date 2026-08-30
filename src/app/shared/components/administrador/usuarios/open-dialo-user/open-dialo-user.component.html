@@ -1,0 +1,147 @@
+<div class="dialog-container">
+    <!-- HEADER -->
+    <div class="dialog-header">
+        <div>
+            <h2>{{id ?'Editar usuario':'Crear usuario'}}</h2>
+
+        </div>
+        <button type="button" class="close-button" (click)="close()">
+            <i class="bi bi-x-lg"></i>
+        </button>
+    </div>
+
+
+    <!-- CONTENIDO -->
+    <div class="dialog-body">
+
+        <div class="form-columns">
+
+            <!-- INFORMACIÓN PERSONAL -->
+            <section class="form-section">
+
+                <form [formGroup]="form">
+                    <h3>Información personal</h3>
+
+                    <div class="field">
+
+                        <label>Nombre completo</label>
+                        <input type="text" class="form-control" formControlName="name">
+
+                    </div>
+
+                    <div class="field">
+
+                        <label>Correo electrónico</label>
+
+                        <input type="email" class="form-control" formControlName="email">
+                    </div>
+                    <div class="field">
+
+                        <label>Contraseña</label>
+
+                        <input type="password" class="form-control" formControlName="password">
+                    </div>
+                </form>
+            </section>
+
+
+            <!-- ASIGNACIÓN -->
+            <section class="form-section">
+
+                <form [formGroup]="form">
+                    <h3>Asignación</h3>
+
+                    <div class="field">
+
+                        <label>Rol</label>
+
+                        <select class="form-select" formControlName="role_id">
+                            @for (item of roles; track $index) {
+                            <option [value]="item.id">
+                                {{item.name}}
+
+                            </option>
+                            }
+                        </select>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>Área</label>
+
+                        <select class="form-select" formControlName="area_id">
+                            @for (item of areas; track item.id) {
+                            <option [value]="item.id">
+                                {{item.name}}
+                            </option>
+                            }
+                        </select>
+
+                    </div>
+                </form>
+
+                <!-- INFORMACIÓN DEL ROL -->
+                <div class="role-info">
+
+                    <div class="role-icon">
+                        <i class="bi bi-person-badge"></i>
+                    </div>
+                    <div>
+                        <strong>Permisos del rol</strong>
+                        <p>
+                            Los usuarios con el rol seleccionado
+                            tendrán acceso a las funciones correspondientes
+                            de su área.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ESTADO -->
+        <form [formGroup]="form">
+            <div class="status-section">
+            <h3>Estado</h3>
+            <div class="status-content">
+                <label class="switch">
+                    <input type="checkbox" formControlName="estado">
+                    <span class="slider"></span>
+                </label>
+             <div>
+                    <strong>
+                        Usuario activo
+                    </strong>
+                    <p>
+                        El usuario puede acceder a la plataforma
+                    </p>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="dialog-footer">
+        <button type="button" class="btn-cancel" (click)="close()">
+
+            <i class="bi bi-person-x"></i>
+            Cancelar
+        </button>
+
+       @if (id) {
+         <button type="button" class="btn-save" (click)="editarUsuario()">
+
+            <i class="bi bi-pencil-fill"></i>
+            Editar Usuario
+        </button>
+       }@else {
+        <button type="button" class="btn-save" (click)="crearUsuario()" >
+
+            <i class="bi bi-floppy-fill"></i>
+            Guardar Usuario
+        </button>
+       }
+    </div>
+</div>

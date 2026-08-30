@@ -1,4 +1,5 @@
 import {
+  HttpErrorResponse,
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
@@ -8,6 +9,7 @@ import { catchError, throwError, Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService, private router: Router) { }
@@ -24,15 +26,27 @@ export class AuthInterceptor implements HttpInterceptor {
         },
       });
     }
-    return next.handle(req)
-    /*.pipe(
-      catchError((error) => {
-        if (error.status === 401) {
+    return next.handle(req).pipe(
+      catchError((error: HttpErrorResponse) => { // 2. Tipado explícito
+        // Validamos el 401 y nos aseguramos de no romper la petición de login original
+        if (error.status === 401 && !req.url.includes('/login')) { 
           this.authService.logout();
-          this.router.navigate(['/login']);
+           Swal.fire({
+                    icon: 'warning',
+                    title: 'Sesion expirada',
+                    text: 'vuelve a iniciar sesion',
+                    confirmButtonText: 'Aceptar',
+                    confirmButtonColor: '#dcb826'
+                    
+                  }).then(resp=>{
+                    if(resp.isConfirmed){
+                      this.router.navigate(['/login']);
+                    }
+                  });
+      
         }
         return throwError(() => error);
       })
-    );*/
+    );
   }
 }

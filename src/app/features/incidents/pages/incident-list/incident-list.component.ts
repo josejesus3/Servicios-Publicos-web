@@ -12,6 +12,7 @@ import { IncidentCreateComponent } from '../incident-create/incident-create.comp
 import { environment } from '../../../../../environments/environment';
 import { ImageFullComponent } from './image-full/image-full.component';
 import { IncidentDetailComponent } from '../incident-detail/incident-detail.component';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-incident-list',
@@ -26,13 +27,13 @@ export class IncidentListComponent {
   @Input() pageCurret!: any;
   @Output() refresh = new EventEmitter();
   @Output() pageChange = new EventEmitter<PageEvent>();
+  public auth=inject(AuthService);
   urlImage = environment.UrlImage;
 
   readonly dialog = inject(MatDialog);
   private incidenService = inject(IncidentService);
   changePage(event: PageEvent) {
     this.pageChange.emit(event);
-    console.log(this.urlImage);
   }
 
   confirmaEliminar(id: number) {

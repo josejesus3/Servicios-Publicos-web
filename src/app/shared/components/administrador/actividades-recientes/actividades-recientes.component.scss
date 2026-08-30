@@ -24,7 +24,7 @@ $purple-bg: #f6efff;
 
 .dashboard {
 
-min-height: 100vh;
+    min-height: 100vh;
 
 }
 
@@ -41,84 +41,85 @@ min-height: 100vh;
     transition: .30s ease;
     overflow: hidden;
 }
+
 .dashboard-card:hover,
 .stat-card:hover {
     transform: translateY(-4px);
     box-shadow:
-        0 8px 20px rgba(15,23,42,.06),
-        0 20px 45px rgba(15,23,42,.10);
+        0 8px 20px rgba(15, 23, 42, .06),
+        0 20px 45px rgba(15, 23, 42, .10);
 }
 
 
 .timeline {
-
-    position:relative;
-
-    padding:10px 20px 20px;
+    overflow-x: scroll;
+    position: relative;
+    padding: 10px 10px 20px;
+    height: 450px;
 
 }
 
 
 .timeline-item {
 
-    display:flex;
+    display: flex;
 
-    gap:18px;
+    gap: 18px;
 
-    position:relative;
+    position: relative;
 
-    padding:18px 0;
+    padding: 18px 0;
 
 }
 
 
 .timeline-item:not(:last-child)::after {
 
-    content:"";
+    content: "";
 
-    position:absolute;
+    position: absolute;
 
-    left:20px;
+    left: 20px;
 
-    top:58px;
+    top: 58px;
 
-    width:2px;
+    width: 2px;
 
-    height:calc(100% - 18px);
+    height: calc(100% - 18px);
 
-    background:#e8edf5;
+    background: #e8edf5;
 
 }
 
 
 .timeline-icon {
 
-    width:42px;
+    width: 42px;
 
-    height:42px;
+    height: 42px;
 
-    min-width:42px;
+    min-width: 42px;
 
-    border-radius:50%;
+    border-radius: 50%;
 
-    display:flex;
+    display: flex;
 
-    align-items:center;
+    align-items: center;
 
-    justify-content:center;
+    justify-content: center;
 
-    z-index:2;
+    z-index: 2;
 
 }
 
 
 .timeline-icon mat-icon {
 
-    font-size:22px;
+    font-size: 22px;
 
-    width:22px;
+    width: 22px;
 
-    height:22px;
+    height: 22px;
 
 }
 
@@ -128,36 +129,36 @@ min-height: 100vh;
 
 .timeline-icon.orange {
 
-    background:#fff3e8;
+    background: #fff3e8;
 
-    color:#ff7a00;
+    color: #ff7a00;
 
 }
 
 
 .timeline-icon.blue {
 
-    background:#edf5ff;
+    background: #edf5ff;
 
-    color:#3b82f6;
+    color: #3b82f6;
 
 }
 
 
 .timeline-icon.green {
 
-    background:#eafaf1;
+    background: #eafaf1;
 
-    color:#22c55e;
+    color: #22c55e;
 
 }
 
 
 .timeline-icon.purple {
 
-    background:#f5edff;
+    background: #f5edff;
 
-    color:#a855f7;
+    color: #a855f7;
 
 }
 
@@ -165,58 +166,59 @@ min-height: 100vh;
 
 .timeline h6 {
 
-    margin:0;
+    margin: 0;
 
-    font-size:15px;
+    font-size: 15px;
 
-    font-weight:700;
+    font-weight: 700;
 
-    color:#1e293b;
+    color: #1e293b;
 
 }
 
 
 .timeline small {
 
-    display:block;
+    display: block;
 
-    margin-top:4px;
+    margin-top: 4px;
 
-    line-height:1.5;
+    line-height: 1.5;
 
 }
+
 .mat-mdc-card {
 
-    --mdc-elevated-card-container-color:#ffffff;
+    --mdc-elevated-card-container-color: #ffffff;
 
-    background:#ffffff !important;
+    background: #ffffff !important;
 
 }
 
 
 .mat-mdc-card-content {
 
-    padding:24px !important;
+    padding: 24px !important;
 
 }
 
 
 .mat-mdc-card-header {
 
-    display:flex;
+    display: flex;
 
-    align-items:center;
+    align-items: center;
 
 }
 
 
 .mat-mdc-menu-panel {
 
-    border-radius:15px !important;
+    border-radius: 15px !important;
 
     box-shadow:
 
-        0 15px 40px rgba(15,23,42,.15)!important;
+        0 15px 40px rgba(15, 23, 42, .15) !important;
 
 }
 
@@ -230,18 +232,18 @@ min-height: 100vh;
 
     from {
 
-        opacity:0;
+        opacity: 0;
 
-        transform:translateY(15px);
+        transform: translateY(15px);
 
     }
 
 
     to {
 
-        opacity:1;
+        opacity: 1;
 
-        transform:translateY(0);
+        transform: translateY(0);
 
     }
 
@@ -252,36 +254,36 @@ min-height: 100vh;
 .dashboard-card,
 .stat-card {
 
-    animation:fadeUp .45s ease forwards;
+    animation: fadeUp .45s ease forwards;
 
 }
 
 
 
-.stat-card:nth-child(1){
+.stat-card:nth-child(1) {
 
-    animation-delay:.05s;
-
-}
-
-
-.stat-card:nth-child(2){
-
-    animation-delay:.10s;
+    animation-delay: .05s;
 
 }
 
 
-.stat-card:nth-child(3){
+.stat-card:nth-child(2) {
 
-    animation-delay:.15s;
+    animation-delay: .10s;
 
 }
 
 
-.stat-card:nth-child(4){
+.stat-card:nth-child(3) {
 
-    animation-delay:.20s;
+    animation-delay: .15s;
+
+}
+
+
+.stat-card:nth-child(4) {
+
+    animation-delay: .20s;
 
 }
 
@@ -313,4 +315,16 @@ mat-card-subtitle {
 
     flex: 1;
 
+}
+
+@media (max-width:1025px) {
+    .timeline {
+        padding: 0;
+        margin: 0;
+        height: 450px;
+    }
+    .timeline-item {
+    padding: 0 0;
+
+}
 }

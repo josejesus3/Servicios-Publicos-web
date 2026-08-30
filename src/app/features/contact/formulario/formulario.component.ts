@@ -55,54 +55,66 @@ export class FormularioComponent implements OnInit {
   }
 
   initFrom() {
-    const formGroupConfig: any = {};
+  const formGroupConfig: any = {};
 
-    this.contactFields.forEach(item => {
-      const validator = [Validators.required];
-      if(item.type==='textarea'){
-        validator.push(Validators.maxLength(300))
+  this.contactFields.forEach(item => {
+    const validator = [Validators.required];
 
-      }
-      if (item.type === 'email') {
-        validator.push(Validators.email);
-      }
-      formGroupConfig[item.name] = ['', validator];
-    });
+    if (item.type === 'textarea') {
+      validator.push(Validators.maxLength(300));
+    }
 
-    this.form = this.fb.group(formGroupConfig);
+    if (item.type === 'email') {
+      validator.push(Validators.email);
 
-  }
+      formGroupConfig[item.name] = [
+        {
+          value: 'coordinacion.servicios-municipales@elgrullo.gob.mx',
+          disabled: true
+        },
+        validator
+      ];
+
+      return;
+    }
+
+    formGroupConfig[item.name] = ['', validator];
+  });
+
+  this.form = this.fb.group(formGroupConfig);
+}
 
   onSubmit() {
     if (this.form.valid) {
-      console.log('¡Formulario enviado con éxito!', this.form.value);
-     Swal.fire({
-    title: '¡Éxito!',
-    text: '¡Enviado correctamente!',
-    icon: 'success',
-    confirmButtonText: 'Ok',
-    confirmButtonColor: '#f26822', // Tu color naranja
-    background: '#ffffff',
-    customClass: {
-      title: 'fs-4 font-weight-normal', // Usando clases de Bootstrap o CSS propio
-      popup: 'swal2-custom-success' // Clase personalizada para el icono
-    }
-  });
+
+      Swal.fire({
+        title: '¡Éxito!',
+        text: '¡Enviado correctamente!',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: '#f26822', // Tu color naranja
+        background: '#ffffff',
+        customClass: {
+          title: 'fs-4 font-weight-normal', // Usando clases de Bootstrap o CSS propio
+          popup: 'swal2-custom-success' // Clase personalizada para el icono
+        }
+      });
+      console.log(this.form.value);
       this.form.reset();
 
     } else {
       Swal.fire({
-    title: '¡Ups! Algo salió mal',
-    text: 'No pudimos enviar tu mensaje en este momento. Por favor, revisa todos tus campos o tu conexión ',
-    icon: 'error',
-    confirmButtonText: 'Cerrar',
-    confirmButtonColor: '#ec5a5a', // Un color oscuro neutro
-    background: '#ffffff',
-    // Título también pequeño en el error para mantener la coherencia
-    customClass: {
-      title: 'fs-4'
-    }
-  });
+        title: '¡Ups! Algo salió mal',
+        text: 'No pudimos enviar tu mensaje en este momento. Por favor, revisa todos tus campos o tu conexión ',
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+        confirmButtonColor: '#ec5a5a', // Un color oscuro neutro
+        background: '#ffffff',
+        // Título también pequeño en el error para mantener la coherencia
+        customClass: {
+          title: 'fs-4'
+        }
+      });
       this.form.markAllAsTouched()
     }
   }

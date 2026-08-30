@@ -1,0 +1,297 @@
+.dialog-container {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    color: #28323c;
+}
+
+/* HEADER */
+
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 28px 16px;
+    border-bottom: 1px solid #edf0f3;
+    background: #ff6a00;
+
+    h2 {
+        margin: 0 0 7px;
+        font-size: 32px;
+        font-weight: 600;
+        color: white;
+    }
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #8a96a3;
+    font-size: 11px;
+
+    i {
+        font-size: 10px;
+    }
+}
+
+.close-button {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #dce1e6;
+    border-radius: 6px;
+    background: white;
+    color: #6b7280;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    &:hover {
+        background: #f5f6f7;
+        color: #333;
+    }
+}
+
+
+/* BODY */
+
+.dialog-body {
+    padding: 20px 28px 10px;
+}
+
+.form-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-section {
+    border: 1px solid #edf0f3;
+    border-radius: 9px;
+    padding: 16px;
+
+    h3 {
+        margin: 0 0 18px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #25313c;
+    }
+}
+
+.field {
+    margin-bottom: 15px;
+
+    label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #48535e;
+    }
+
+    input,
+    select {
+        height: 36px;
+        font-size: 14px;
+        border-color: #dce1e6;
+        border-radius: 6px;
+
+        &:focus {
+            border-color: #80bfff;
+            box-shadow: 0 0 0 2px rgba(13, 110, 253, .08);
+        }
+    }
+}
+
+
+/* ROLE INFO */
+
+.role-info {
+    display: flex;
+    gap: 10px;
+
+    margin-top: 20px;
+    padding: 12px;
+
+    background: #eaf4ff;
+    border-radius: 7px;
+
+    color: #3772a8;
+
+    .role-icon {
+        font-size: 18px;
+        color: #4384bd;
+    }
+
+    strong {
+        display: block;
+        margin-bottom: 3px;
+        font-size: 11px;
+    }
+
+    p {
+        margin: 0;
+        font-size: 9px;
+        line-height: 1.4;
+        color: #5d7891;
+    }
+}
+
+
+/* STATUS */
+
+.status-section {
+    padding: 18px 5px 8px;
+
+    h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+}
+
+.status-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    strong {
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    p {
+        margin: 2px 0 0;
+        font-size: 12px;
+        color: #89929c;
+    }
+}
+
+
+/* SWITCH */
+
+.switch {
+    position: relative;
+    width: 42px;
+    height: 22px;
+    display: inline-block;
+
+    input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+
+    background-color: #cdd3d8;
+    border-radius: 20px;
+
+    transition: .2s;
+
+    &::before {
+        content: "";
+        position: absolute;
+
+        width: 16px;
+        height: 16px;
+
+        left: 3px;
+        top: 3px;
+
+        background: white;
+        border-radius: 50%;
+
+        transition: .2s;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+    }
+}
+
+.switch input:checked + .slider {
+    background-color: #20bf7a;
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(20px);
+}
+
+
+/* FOOTER */
+
+.dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 18px;
+
+    padding: 15px 28px 20px;
+}
+
+.btn-cancel,
+.btn-save {
+    height: 38px;
+    padding: 0 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+.btn-cancel {
+    min-width: 130px;
+    background: white;
+    border: 1px solid #ff8b8b;
+    color: #e64b4b;
+    cursor: pointer;
+    &:hover {
+        background: #fff5f5;
+    }
+}
+
+.btn-save {
+    min-width: 140px;
+    background: #ff6b00;
+    border: 1px solid #ff6b00;
+    color: white;
+    cursor: pointer;
+    &:hover {
+        background: #e85f00;
+        transform: translateY(-1px);
+    }
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+
+    .form-columns {
+        grid-template-columns: 1fr;
+    }
+
+    .dialog-header,
+    .dialog-body,
+    .dialog-footer {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .dialog-footer {
+        flex-direction: column-reverse;
+
+        button {
+            width: 100%;
+        }
+    }
+}

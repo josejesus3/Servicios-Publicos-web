@@ -21,10 +21,9 @@ import Swal from 'sweetalert2';
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatDialogTitle,
     MatDialogContent,
     MatDialogActions,
-    MatIconModule, NgIf, MatDialogContainer],
+    MatIconModule,],
   templateUrl: './incident-create.component.html',
   styleUrl: './incident-create.component.scss'
 })

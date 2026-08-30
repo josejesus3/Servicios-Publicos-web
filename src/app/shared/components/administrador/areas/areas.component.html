@@ -1,317 +1,134 @@
-<div class="row g-4 mt-1">
-
-        <!-- TABLA DE ÁREAS -->
-
-        <div class="col-xl-8">
-
-            <mat-card class="dashboard-card">
-
-                <mat-card-header>
-
-                    <mat-card-title>
-
-                        Áreas del Municipio
-
-                    </mat-card-title>
-
-                    <span class="flex-spacer"></span>
-
-                    <button mat-flat-button color="primary">
-
-                        Nueva Área
-
-                    </button>
-
-                </mat-card-header>
-
-                <mat-card-content>
-
-                    <div class="table-responsive">
-
-                        <table class="table table-hover align-middle">
-
-                            <thead>
-
-                                <tr>
-
-                                    <th>Área</th>
-                                    <th>Responsable</th>
-                                    <th>Usuarios</th>
-                                    <th>Estado</th>
-                                    <th></th>
-
-                                </tr>
-
-                            </thead>
-
-                            <tbody>
-
-                                <tr>
-
-                                    <td>
-
-                                        Obras Públicas
-
-                                    </td>
-
-                                    <td>
-
-                                        Ing. Carlos Ruiz
-
-                                    </td>
-
-                                    <td>
-
-                                        15
-
-                                    </td>
-
-                                    <td>
-
-                                        <span class="badge bg-success">
-
-                                            Activa
-
-                                        </span>
-
-                                    </td>
-
-                                    <td>
-
-                                        <button mat-icon-button>
-
-                                            <mat-icon>
-
-                                                more_vert
-
-                                            </mat-icon>
-
-                                        </button>
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td>
-
-                                        Desarrollo Urbano
-
-                                    </td>
-
-                                    <td>
-
-                                        Lic. Ana Torres
-
-                                    </td>
-
-                                    <td>
-
-                                        12
-
-                                    </td>
-
-                                    <td>
-
-                                        <span class="badge bg-success">
-
-                                            Activa
-
-                                        </span>
-
-                                    </td>
-
-                                    <td>
-
-                                        <button mat-icon-button>
-
-                                            <mat-icon>
-
-                                                more_vert
-
-                                            </mat-icon>
-
-                                        </button>
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td>
-
-                                        Tesorería
-
-                                    </td>
-
-                                    <td>
-
-                                        Jorge Mendoza
-
-                                    </td>
-
-                                    <td>
-
-                                        9
-
-                                    </td>
-
-                                    <td>
-
-                                        <span class="badge bg-warning text-dark">
-
-                                            En revisión
-
-                                        </span>
-
-                                    </td>
-
-                                    <td>
-
-                                        <button mat-icon-button>
-
-                                            <mat-icon>
-
-                                                more_vert
-
-                                            </mat-icon>
-
-                                        </button>
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td>
-
-                                        Servicios Municipales
-
-                                    </td>
-
-                                    <td>
-
-                                        María Gómez
-
-                                    </td>
-
-                                    <td>
-
-                                        18
-
-                                    </td>
-
-                                    <td>
-
-                                        <span class="badge bg-success">
-
-                                            Activa
-
-                                        </span>
-
-                                    </td>
-
-                                    <td>
-
-                                        <button mat-icon-button>
-
-                                            <mat-icon>
-
-                                                more_vert
-
-                                            </mat-icon>
-
-                                        </button>
-
-                                    </td>
-
-                                </tr>
-
-                            </tbody>
-
-                        </table>
-
-                    </div>
-
-                </mat-card-content>
-
-            </mat-card>
-
-        </div>
-
-        <!-- ACCIONES -->
-
-        <div class="col-xl-4">
-
-            <mat-card class="dashboard-card">
-
-                <mat-card-header>
-
-                    <mat-card-title>
-
-                        Acciones del Sistema
-
-                    </mat-card-title>
-
-                </mat-card-header>
-
-                <mat-card-content>
-
-                    <button mat-flat-button color="primary" class="action-btn w-100 mb-3">
-
-                        <mat-icon>
-
-                            backup
-
-                        </mat-icon>
-
-                        Respaldar Base de Datos
-
-                    </button>
-
-                    <button mat-flat-button color="accent" class="action-btn w-100 mb-3">
-
-                        <mat-icon>
-
-                            file_download
-
-                        </mat-icon>
-
-                        Exportar Usuarios
-
-                    </button>
-
-                    <button mat-flat-button color="warn" class="action-btn w-100 mb-3">
-
-                        <mat-icon>
-
-                            security
-
-                        </mat-icon>
-
-                        Auditoría
-
-                    </button>
-
-                    <button mat-flat-button class="action-btn w-100">
-
-                        <mat-icon>
-
-                            settings
-
-                        </mat-icon>
-
-                        Configuración General
-
-                    </button>
-
-                </mat-card-content>
-
-            </mat-card>
-
-        </div>
-
+<mat-card class="dashboard-card">
+
+    <mat-card-header class="header">
+        <mat-card-title class="titulo">
+            Áreas del Municipio
+        </mat-card-title>
+
+        <button class="btn report-button" (click)="openArea()">
+            <i class="bi bi-plus-circle-fill me-2"></i>
+            Nueva area
+        </button>
+    </mat-card-header>
+    <div class="buscador">
+        <mat-form-field appearance="outline" class="mat-buscador">
+            <mat-label>Buscar Área / Responsable</mat-label>
+            <input matInput [(ngModel)]="filter" (keyup.enter)="filtro(filter)">
+        </mat-form-field>
+
+        <button class="btn btn-secondary boton-area" (click)="filtro(filter)">
+            Buscar Área
+        </button>
     </div>
+
+    <mat-card-content>
+
+
+        <div class="table-responsive">
+
+            <table class="table  align-middle">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Área</th>
+                        <th>Usuarios</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+
+                    </tr>
+
+                </thead>
+
+                @if(loanding){
+                <tr>
+                    <td colspan="6">
+                        <div class=" d-flex flex-column justify-content-center align-items-center gap-2 py-5">
+                            <div class="spinner-border text-info" role="status">
+                            </div>
+                            <span class=" text-black">
+                                Cargando...
+                            </span>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                </tr>
+
+                }@else if(searchDone && areas.length===0){
+                <tr>
+                    <td colspan="6">
+                        <div class="d-flex flex-column justify-content-center align-items-center py-5 text-muted">
+
+                            <i class="bi bi-building fs-1 mb-3 text-secondary"></i>
+
+                            <h5 class="mb-1 fw-semibold">
+                                No encontramos Areas
+                            </h5>
+
+                            <span class="small">
+                                No hay resultados que coincidan con tu búsqueda.
+                            </span>
+
+                        </div>
+                    </td>
+                </tr>
+                }@else {
+                @for (item of areas; track $index) {
+
+                <tbody>
+
+                    <tr>
+                        <td>
+
+                            {{item.name}}
+
+                        </td>
+                        <td>
+                            @if (item.users.length<1) { <span class="user-unassigned">
+                                <i class="bi bi-person-plus-fill"></i>
+                                Por asignar
+                                </span>
+
+                                }@else{
+                                <span class="user-count">
+                                    <i class="bi bi-people-fill"></i>
+                                    {{item.users.length}}
+                                </span>
+                                }
+                        </td>
+                        <td>
+                            @if(item.estado){
+                            <span class="badge bg-success">
+                                Activo
+                            </span>
+                            }@else {
+                            <span class="badge bg-secondary">
+                                Inactivo
+                            </span>
+                            }
+                        </td>
+                        <td>
+
+                            <button class="btn btn-sm border-0  m-0 p-0 " matTooltip="Editar Area" matRipple
+                                (click)="openArea(item)" [matRippleCentered]="true" [matRippleUnbounded]="true"
+                                [matRippleRadius]="25">
+                                <i class="bi bi-pencil fs-3 text-info"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                }
+                }
+            </table>
+        </div>
+
+    </mat-card-content>
+    @if (pageCurret) {
+    <mat-paginator class="custom-paginator" [length]="pageCurret.total" [pageSize]="pageCurret.per_page"
+        aria-label="Select page" (page)="changePage($event)">
+    </mat-paginator>
+    }
+</mat-card>

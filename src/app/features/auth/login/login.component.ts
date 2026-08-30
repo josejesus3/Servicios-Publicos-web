@@ -1,19 +1,20 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginRequest } from '../../../core/models/user/loginRequest.model';
 import { NgIf } from '@angular/common';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInput } from "@angular/material/input";
 import Swal from 'sweetalert2';
+import { A11yModule } from "@angular/cdk/a11y";
 
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, NgIf, MatFormFieldModule, MatInput],
+  imports: [FormsModule, ReactiveFormsModule, NgIf, MatFormFieldModule, MatInput, RouterLink, A11yModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -52,8 +53,8 @@ export class LoginComponent implements OnInit {
             confirmButtonText: 'Continuar',
             confirmButtonColor: '#f26822',
             background: '#ffffff',
-            allowEscapeKey:false,
-            allowOutsideClick:false,
+            allowEscapeKey: false,
+            allowOutsideClick: false,
             customClass: {
               title: 'fs-4 font-weight-normal',
               popup: 'swal2-custom-success'
@@ -99,6 +100,10 @@ export class LoginComponent implements OnInit {
       this.form.markAllAsTouched();
     }
 
+  }
+
+  regresar() {
+    this.router.navigate(['inicio']);
   }
 
 }

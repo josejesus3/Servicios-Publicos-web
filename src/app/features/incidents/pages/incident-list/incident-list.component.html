@@ -65,7 +65,7 @@
                             <i class="bi bi-pencil-square fs-5" style="color: #2196F3;"></i>
                         </button>
 
-                        <button class="btn btn-sm border-0  m-0 p-0 " matTooltip="Eliminar Reporte"
+                        <button *ngIf="auth.getUser()?.role_id==2 && item.status=='pendiente'" class="btn btn-sm border-0  m-0 p-0 " matTooltip="Eliminar Reporte"
                             (click)="confirmaEliminar(item.id)">
                             <i class="bi bi-trash fs-5" style="color:#F44336;"></i>
                         </button>

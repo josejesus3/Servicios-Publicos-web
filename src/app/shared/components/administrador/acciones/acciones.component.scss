@@ -86,7 +86,6 @@ small {
 .table-responsive {
 
     overflow-x:auto;
-    height: 450px;
 
 }
 
@@ -491,70 +490,6 @@ small {
 
 
 }
-.header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px 20px;
-    padding-top: 20px;
-}
-
-.titulo{
-    flex: 1;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.buscador{
-    display: flex;
-    gap: 10px;
-    padding-left: 15px;
-}
-.report-button {
-    font-size: 18px;
-    font-weight: 400;
-    background: white;
-    color: #ff6a00;
-    border: 1px solid #ff6a00;
-    border-radius: 12px;
-    transition: all .25s ease;
-    z-index: 2;
-}
-
-.report-button:hover {
-    background: #fff5ee;
-    color: #ff6a00;
-
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 10px 20px rgba(0, 0, 0, .12);
-}
-
-.report-button:active {
-    background: white !important;
-    color: #ff6a00 !important;
-    border: 1px solid #ff6a00 !important;
-
-    transform: scale(.97);
-    box-shadow: none;
-}
-
-.report-button:focus {
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-.mat-buscador{
-    width: 400px;
-    --mdc-outlined-text-field-container-shape: 8px;
-    --mat-form-field-container-height: 50px;
-    --mat-form-field-container-vertical-padding: 10px;
-}
-
-.boton-area{
-    height: 50px;
-}
 
 
 
@@ -663,7 +598,11 @@ small {
 }
 
 
+.mat-mdc-card-content {
 
+    padding:24px !important;
+
+}
 
 
 .mat-mdc-card-header {
@@ -684,39 +623,7 @@ small {
         0 15px 40px rgba(15,23,42,.15)!important;
 
 }
-.user-count,
-.user-unassigned {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 15px;
-  font-weight: 700;
 
-  i {
-    font-size: 15px;
-  }
-}
-
-/* ==========================
-   CON USUARIOS
-========================== */
-
-.user-count {
-  background: #e8f2ff;
-  color: #2878bd;
-}
-
-/* ==========================
-   POR ASIGNAR
-========================== */
-.user-unassigned {
-  background: #fff5d9;
-  color: #b77900;
-
-  border: 1px solid #ffe4a3;
-}
 
 /*==================================================
 =            ANIMACIONES
@@ -914,5 +821,10 @@ button.mat-mdc-button:hover {
         transparent
     );
 
+
+}
+.flex-spacer {
+
+    flex: 1;
 
 }
