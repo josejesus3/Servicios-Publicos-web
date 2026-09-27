@@ -7,6 +7,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { Area } from '../../../../../core/models/area/areaRequest.model';
 import { AdministradorService } from '../../../../../core/services/administrador.service';
 import Swal from 'sweetalert2';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-open-dialog-areas',
@@ -14,7 +15,7 @@ import Swal from 'sweetalert2';
   imports: [CommonModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatSlideToggleModule],
+    MatSlideToggleModule, MatTooltip],
   templateUrl: './open-dialog-areas.component.html',
   styleUrl: './open-dialog-areas.component.scss'
 })
@@ -24,17 +25,31 @@ export class OpenDialogAreasComponent {
   private fb = inject(FormBuilder);
   id: number = 0;
   private adminService = inject(AdministradorService);
+   icono: any = [
+      {area:'Limpieza',icon: 'bi bi-trash-fill text-info fs-2'},
+      {area:'Bacheo',icon: 'bi bi-signpost-fill text-warning fs-2'},
+      {area:'Alumbrado Público',icon: 'bi bi-lightbulb-fill text-warning fs-2'},
+      {area:'Fuga de Agua',icon: 'bi bi-droplet-fill text-primary fs-2'},
+      {area:'Áreas Verdes',icon: 'bi bi-tree-fill text-success fs-2'},
+      {area:'Agua Potable',icon: 'bi bi-droplet-half text-primary fs-2'},
+      {area:'Aseo Público',icon: 'bi bi-trash3-fill text-info fs-2'},
+      {area:'Parques y Jardines',icon: 'bi bi-tree-fill text-success fs-2'}
+];
   constructor(@Inject(MAT_DIALOG_DATA) public areaData: Area) {
     this.id = areaData?.id;
     this.form = this.fb.group({
       name: [areaData?.name || '', Validators.required],
       slug: [areaData?.slug || '', Validators.required],
-      estado:[areaData?.estado]
+      estado:[areaData?.estado],
+      icono:[this.icono.icon,Validators.required],
     })
 
   }
   close() {
     this.dialogRef.close();
+  }
+  iconobuton(){
+    console.log(this.form.value)
   }
   guardarArea() {
     console.log("areaDta:",this.form.value)

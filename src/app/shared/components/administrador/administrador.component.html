@@ -3,7 +3,7 @@
     <app-estadisticas [areas]="areas" [users]="users" [incidentes]="incident"></app-estadisticas>
     <div class="row">
 
-        <div class="col-xl-9 col-lg-9">
+        <div class="col-xl-12 col-lg-12">
 
             <app-usuarios [users]="users" [pageCurret]="pageCurret" [loanding]="loadingUser" [areas]="areas"
                 (refresh)="getUsuarios()" [searchDone]="searchDoneUser" (pageChange)="nextPage($event)"
@@ -11,9 +11,9 @@
                 (filterUser)="getUsuario($event)"></app-usuarios>
         </div>
 
-        <div class="col-xl-3 col-lg-3">
+        <!--<div class="col-xl-3 col-lg-3">
             <app-actividades-recientes></app-actividades-recientes>
-        </div>
+        </div>-->
     </div>
 
     <div class="row py-3">

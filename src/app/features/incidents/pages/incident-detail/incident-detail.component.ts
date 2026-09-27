@@ -22,8 +22,6 @@ export class IncidentDetailComponent {
   readonly dialog = inject(MatDialog);
   constructor(@Inject(MAT_DIALOG_DATA) public data: Incident) {
     this.incident = data
-    
-    console.log("data: ", this.incident)
     this.datosReporte = [
       { icono: "bi-check-circle-fill", color: "text-success", titulo: "Categoría", valor: this.incident.area['name'] },
       { icono: "bi-check-circle-fill", color: "text-success", titulo: "Descripción del problema", valor: this.incident.description },

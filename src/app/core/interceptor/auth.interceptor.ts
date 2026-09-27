@@ -13,10 +13,8 @@ import Swal from 'sweetalert2';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService, private router: Router) { }
-  intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler,
-  ): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<any>,
+    next: HttpHandler,): Observable<HttpEvent<any>> {
     const token = this.authService.getToken();
 
     if (token) {
@@ -30,7 +28,6 @@ export class AuthInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => { // 2. Tipado explícito
         // Validamos el 401 y nos aseguramos de no romper la petición de login original
         if (error.status === 401 && !req.url.includes('/login')) { 
-          this.authService.logout();
            Swal.fire({
                     icon: 'warning',
                     title: 'Sesion expirada',
@@ -40,6 +37,7 @@ export class AuthInterceptor implements HttpInterceptor {
                     
                   }).then(resp=>{
                     if(resp.isConfirmed){
+                      this.authService.logout();
                       this.router.navigate(['/login']);
                     }
                   });

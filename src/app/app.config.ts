@@ -10,7 +10,8 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),
+    provideZoneChangeDetection({ eventCoalescing: true }), 
+    //provideRouter(routes),
     provideRouter(routes),
     provideHttpClient(
       withInterceptorsFromDi()

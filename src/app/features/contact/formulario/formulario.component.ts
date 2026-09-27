@@ -32,7 +32,7 @@ export class FormularioComponent implements OnInit {
       label: 'Correo electrónico',
       name: 'email',
       type: 'email',
-      placeholder: 'Ingresa tu correo electrónico',
+      placeholder: 'Ingresa un correo',
       icon: 'bi bi-envelope icon-orange fs-5'
     },
     {
@@ -55,36 +55,37 @@ export class FormularioComponent implements OnInit {
   }
 
   initFrom() {
-  const formGroupConfig: any = {};
+    const formGroupConfig: any = {};
 
-  this.contactFields.forEach(item => {
-    const validator = [Validators.required];
+    this.contactFields.forEach(item => {
+      const validator = [Validators.required];
 
-    if (item.type === 'textarea') {
-      validator.push(Validators.maxLength(300));
-    }
+      if (item.type === 'textarea') {
+        validator.push(Validators.maxLength(300));
+      }
 
-    if (item.type === 'email') {
-      validator.push(Validators.email);
+      if (item.type === 'email') {
+        validator.push(Validators.email);
 
-      formGroupConfig[item.name] = [
-        {
-          value: 'coordinacion.servicios-municipales@elgrullo.gob.mx',
-          disabled: true
-        },
-        validator
-      ];
+        formGroupConfig[item.name] = [
+          {
+            value: 'coordinacion.servicios-municipales@elgrullo.gob.mx',
+            disabled: true
+          },
+        ];
 
-      return;
-    }
+        return;
+      }
 
-    formGroupConfig[item.name] = ['', validator];
-  });
+      formGroupConfig[item.name] = ['', validator];
+    });
 
-  this.form = this.fb.group(formGroupConfig);
-}
+    this.form = this.fb.group(formGroupConfig);
+  }
 
   onSubmit() {
+    const data = this.form.getRawValue();
+
     if (this.form.valid) {
 
       Swal.fire({
@@ -99,8 +100,12 @@ export class FormularioComponent implements OnInit {
           popup: 'swal2-custom-success' // Clase personalizada para el icono
         }
       });
-      console.log(this.form.value);
-      this.form.reset();
+      console.log(data);
+      this.form.reset({
+        email: 'coordinacion.servicios-municipales@elgrullo.gob.mx',
+        disabled: true
+      });
+
 
     } else {
       Swal.fire({

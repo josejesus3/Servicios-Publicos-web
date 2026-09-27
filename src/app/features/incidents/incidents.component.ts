@@ -54,13 +54,11 @@ export class IncidentsComponent implements OnInit {
   onFiltroCat(event: MatSelectChange) {
 
     this.categoria = event.value;
-    console.log('categoria', this.categoria)
     this.getIncident();
   }
   onFiltroEst(event: MatSelectChange) {
 
     this.estado = event.value;
-    console.log('estado', this.estado)
     this.getIncident();
   }
  reiniciarValores() {

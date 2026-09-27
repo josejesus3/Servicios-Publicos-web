@@ -12,7 +12,7 @@
     </div>
 
     <!-- BODY -->
-    <form [formGroup]="form"  class="modal-body-custom">
+    <form [formGroup]="form"  class="modal-body-custom overflow-y-scroll">
 
         <!-- NOMBRE -->
         <div class="form-section">
@@ -54,6 +54,15 @@
                     </p>
                 </div>
             </div>
+        </div>
+        <div class="icono-section">
+            <h5>Elige un icono para tu area</h5>
+            <div class="icono-content" >
+                <div class="icono"  *ngFor="let icons of icono">
+                    <button [class]="icons.icon" class="btn border-0" [matTooltip]="icons.area" formControlName="icono" (click)="iconobuton()"></button>
+                </div>
+            </div>
+
         </div>
 
     </form>

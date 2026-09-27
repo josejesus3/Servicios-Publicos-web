@@ -95,10 +95,9 @@
     border: 1px solid #ff6a00;
     border-radius: 12px;
     transition: all .25s ease;
-    position: relative;
-    left: 30px;
-    top: 30px;
-    z-index: 2;
+    position: absolute;
+    right: -20px;
+    top: 20px;
 }
 
 .report-button:hover {
@@ -125,6 +124,21 @@
     box-shadow: none !important;
 }
 
+
+@media (max-width:1280px){
+     .report-button {
+        width: 200px;
+    }
+}
+@media (max-width:950px){
+   
+     .report-button {
+        position: static;
+        width: 200px;
+        margin-left: auto;
+        display: block;
+    }
+}
 @media (max-width: 768px) {
     .report-button {
         position: static;

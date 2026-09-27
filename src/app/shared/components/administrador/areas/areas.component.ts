@@ -26,13 +26,12 @@ export class AreasComponent {
   @Input() loanding: boolean = false;
   @Input() searchDone: boolean = false;
   filter = '';
-  @Output() refresh=new EventEmitter();
+  @Output() refresh = new EventEmitter();
   readonly openDialog = inject(MatDialog);
   @Output() pageChange = new EventEmitter<PageEvent>();
   @Output() filterArea = new EventEmitter<string>();
-constructor(){
-  console.log('Areas:',this.areas);
-}
+
+  
   filtro(event: string) {
     this.filterArea.emit(event);
   }
@@ -41,23 +40,23 @@ constructor(){
     this.pageChange.emit(event);
   }
 
-  openArea(area?:Area) {
-    const dialogReft=this.openDialog.open(OpenDialogAreasComponent, {
+  openArea(area?: Area) {
+    const dialogReft = this.openDialog.open(OpenDialogAreasComponent, {
       width: '800px',
       maxWidth: '900px',
       maxHeight: '700px',
       height: '570px',
-      data:area,
+      data: area,
       disableClose: true,
 
     })
-    dialogReft.afterClosed().subscribe(resp=>{
-      if(resp){
+    dialogReft.afterClosed().subscribe(resp => {
+      if (resp) {
         this.refresh.emit();
       }
     })
   }
 
-  
+
 
 }
